@@ -12,18 +12,41 @@ struct ColorWheel: View {
 
   // MARK: - Stored Properties
 
-  /// The selected color.
-  @State private var color: Color = .white
+  /// The selected color harmony scheme.
+  @State private var scheme: Scheme = .complementary
+
+  /// The hue of the color.
+  @State private var hue: Angle = .zero
+
+  /// The saturation of the color.
+  @State private var saturation: Double = 1
+
+  // MARK: - Computed Properties
+
+  /// The additional colors in the current harmony color scheme.
+  var colors: [HSB] {
+    scheme.colors(from: hue, saturation: saturation)
+  }
 
   // MARK: - Body
 
   var body: some View {
     GeometryReader { geometry in
+      let frame = geometry.frame(in: .local)
+
       ControlPoint(
-        color: $color,
-        center: geometry.frame(in: .local).center,
-        radius: geometry.size.width / 2
+        hue: $hue,
+        saturation: $saturation,
+        frame: frame
       )
+
+      ForEach(colors) { color in
+        Circle()
+          .fill(color.color)
+          .stroke(.thinMaterial, lineWidth: 2)
+          .frame(width: 32, height: 32)
+          .position(color.position(in: frame))
+      }
     }
     .aspectRatio(contentMode: .fit)
     .background {

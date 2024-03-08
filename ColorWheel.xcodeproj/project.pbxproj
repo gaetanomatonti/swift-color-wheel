@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B2E405C2B9BAD7C00FB19C1 /* CGPoint+VectorOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E405B2B9BAD7C00FB19C1 /* CGPoint+VectorOperations.swift */; };
+		9B2E405C2B9BAD7C00FB19C1 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E405B2B9BAD7C00FB19C1 /* CGPoint+Extensions.swift */; };
 		9B2E40602B9BB02000FB19C1 /* ControlPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E405F2B9BB02000FB19C1 /* ControlPoint.swift */; };
 		9B2E40632B9BB22F00FB19C1 /* CGRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E40622B9BB22F00FB19C1 /* CGRect+Extension.swift */; };
+		9B2E40652B9BCA2400FB19C1 /* Scheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E40642B9BCA2400FB19C1 /* Scheme.swift */; };
+		9B2E40682B9BD87300FB19C1 /* HSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E40672B9BD87300FB19C1 /* HSB.swift */; };
 		9BC482982B9A6FEF00F5A777 /* ColorWheelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC482972B9A6FEF00F5A777 /* ColorWheelApp.swift */; };
 		9BC4829A2B9A6FEF00F5A777 /* ColorWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC482992B9A6FEF00F5A777 /* ColorWheel.swift */; };
 		9BC4829C2B9A6FF000F5A777 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC4829B2B9A6FF000F5A777 /* Assets.xcassets */; };
@@ -18,9 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9B2E405B2B9BAD7C00FB19C1 /* CGPoint+VectorOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+VectorOperations.swift"; sourceTree = "<group>"; };
+		9B2E405B2B9BAD7C00FB19C1 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		9B2E405F2B9BB02000FB19C1 /* ControlPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPoint.swift; sourceTree = "<group>"; };
 		9B2E40622B9BB22F00FB19C1 /* CGRect+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extension.swift"; sourceTree = "<group>"; };
+		9B2E40642B9BCA2400FB19C1 /* Scheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheme.swift; sourceTree = "<group>"; };
+		9B2E40672B9BD87300FB19C1 /* HSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSB.swift; sourceTree = "<group>"; };
 		9BC482942B9A6FEF00F5A777 /* ColorWheel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorWheel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BC482972B9A6FEF00F5A777 /* ColorWheelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelApp.swift; sourceTree = "<group>"; };
 		9BC482992B9A6FEF00F5A777 /* ColorWheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheel.swift; sourceTree = "<group>"; };
@@ -60,10 +64,19 @@
 		9B2E40612B9BB22200FB19C1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				9B2E405B2B9BAD7C00FB19C1 /* CGPoint+VectorOperations.swift */,
+				9B2E405B2B9BAD7C00FB19C1 /* CGPoint+Extensions.swift */,
 				9B2E40622B9BB22F00FB19C1 /* CGRect+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9B2E40662B9BD86800FB19C1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9B2E40642B9BCA2400FB19C1 /* Scheme.swift */,
+				9B2E40672B9BD87300FB19C1 /* HSB.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		9BC4828B2B9A6FEF00F5A777 = {
@@ -85,6 +98,7 @@
 		9BC482962B9A6FEF00F5A777 /* ColorWheel */ = {
 			isa = PBXGroup;
 			children = (
+				9B2E40662B9BD86800FB19C1 /* Models */,
 				9B2E40612B9BB22200FB19C1 /* Extensions */,
 				9B2E405E2B9BB00F00FB19C1 /* UI */,
 				9B2E405D2B9BB00800FB19C1 /* Shaders */,
@@ -174,11 +188,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B2E40602B9BB02000FB19C1 /* ControlPoint.swift in Sources */,
+				9B2E40682B9BD87300FB19C1 /* HSB.swift in Sources */,
 				9BC482A62B9A700200F5A777 /* ColorWheel.metal in Sources */,
 				9BC4829A2B9A6FEF00F5A777 /* ColorWheel.swift in Sources */,
 				9B2E40632B9BB22F00FB19C1 /* CGRect+Extension.swift in Sources */,
+				9B2E40652B9BCA2400FB19C1 /* Scheme.swift in Sources */,
 				9BC482982B9A6FEF00F5A777 /* ColorWheelApp.swift in Sources */,
-				9B2E405C2B9BAD7C00FB19C1 /* CGPoint+VectorOperations.swift in Sources */,
+				9B2E405C2B9BAD7C00FB19C1 /* CGPoint+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
