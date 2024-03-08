@@ -7,18 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B2E405C2B9BAD7C00FB19C1 /* CGPoint+VectorOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E405B2B9BAD7C00FB19C1 /* CGPoint+VectorOperations.swift */; };
+		9B2E40602B9BB02000FB19C1 /* ControlPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E405F2B9BB02000FB19C1 /* ControlPoint.swift */; };
+		9B2E40632B9BB22F00FB19C1 /* CGRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E40622B9BB22F00FB19C1 /* CGRect+Extension.swift */; };
 		9BC482982B9A6FEF00F5A777 /* ColorWheelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC482972B9A6FEF00F5A777 /* ColorWheelApp.swift */; };
-		9BC4829A2B9A6FEF00F5A777 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC482992B9A6FEF00F5A777 /* ContentView.swift */; };
+		9BC4829A2B9A6FEF00F5A777 /* ColorWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC482992B9A6FEF00F5A777 /* ColorWheel.swift */; };
 		9BC4829C2B9A6FF000F5A777 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC4829B2B9A6FF000F5A777 /* Assets.xcassets */; };
 		9BC4829F2B9A6FF000F5A777 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC4829E2B9A6FF000F5A777 /* Preview Assets.xcassets */; };
+		9BC482A62B9A700200F5A777 /* ColorWheel.metal in Sources */ = {isa = PBXBuildFile; fileRef = 9BC482A52B9A700200F5A777 /* ColorWheel.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B2E405B2B9BAD7C00FB19C1 /* CGPoint+VectorOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+VectorOperations.swift"; sourceTree = "<group>"; };
+		9B2E405F2B9BB02000FB19C1 /* ControlPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPoint.swift; sourceTree = "<group>"; };
+		9B2E40622B9BB22F00FB19C1 /* CGRect+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extension.swift"; sourceTree = "<group>"; };
 		9BC482942B9A6FEF00F5A777 /* ColorWheel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorWheel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BC482972B9A6FEF00F5A777 /* ColorWheelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelApp.swift; sourceTree = "<group>"; };
-		9BC482992B9A6FEF00F5A777 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9BC482992B9A6FEF00F5A777 /* ColorWheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheel.swift; sourceTree = "<group>"; };
 		9BC4829B2B9A6FF000F5A777 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BC4829E2B9A6FF000F5A777 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9BC482A52B9A700200F5A777 /* ColorWheel.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ColorWheel.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +40,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B2E405D2B9BB00800FB19C1 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				9BC482A52B9A700200F5A777 /* ColorWheel.metal */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		9B2E405E2B9BB00F00FB19C1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9BC482992B9A6FEF00F5A777 /* ColorWheel.swift */,
+				9B2E405F2B9BB02000FB19C1 /* ControlPoint.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		9B2E40612B9BB22200FB19C1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9B2E405B2B9BAD7C00FB19C1 /* CGPoint+VectorOperations.swift */,
+				9B2E40622B9BB22F00FB19C1 /* CGRect+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		9BC4828B2B9A6FEF00F5A777 = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +85,10 @@
 		9BC482962B9A6FEF00F5A777 /* ColorWheel */ = {
 			isa = PBXGroup;
 			children = (
+				9B2E40612B9BB22200FB19C1 /* Extensions */,
+				9B2E405E2B9BB00F00FB19C1 /* UI */,
+				9B2E405D2B9BB00800FB19C1 /* Shaders */,
 				9BC482972B9A6FEF00F5A777 /* ColorWheelApp.swift */,
-				9BC482992B9A6FEF00F5A777 /* ContentView.swift */,
 				9BC4829B2B9A6FF000F5A777 /* Assets.xcassets */,
 				9BC4829D2B9A6FF000F5A777 /* Preview Content */,
 			);
@@ -137,8 +173,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BC4829A2B9A6FEF00F5A777 /* ContentView.swift in Sources */,
+				9B2E40602B9BB02000FB19C1 /* ControlPoint.swift in Sources */,
+				9BC482A62B9A700200F5A777 /* ColorWheel.metal in Sources */,
+				9BC4829A2B9A6FEF00F5A777 /* ColorWheel.swift in Sources */,
+				9B2E40632B9BB22F00FB19C1 /* CGRect+Extension.swift in Sources */,
 				9BC482982B9A6FEF00F5A777 /* ColorWheelApp.swift in Sources */,
+				9B2E405C2B9BAD7C00FB19C1 /* CGPoint+VectorOperations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
