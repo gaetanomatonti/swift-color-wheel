@@ -11,13 +11,13 @@ using namespace metal;
 #define TWO_PI (M_PI_H * 2)
 
 half3 mod(half3 x, half3 y) {
-    return x - y * floor(x / y);
+  return x - y * floor(x / y);
 }
 
 half3 hsb2rgb(half3 color) {
   half3 modulo = mod(color.x * 6.0 + half3(0.0, 4.0, 2.0), 6.0);
 
-  half3 rgb = clamp(abs(modulo - 3.0) -1.0, 0.0, 1.0);
+  half3 rgb = clamp(abs(modulo - 3.0) - 1.0, 0.0, 1.0);
 
   rgb = rgb * rgb * (3.0 - 2.0 * rgb);
   return color.z * mix(half3(1.0), rgb, color.y);

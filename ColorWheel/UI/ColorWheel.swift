@@ -12,23 +12,46 @@ struct ColorWheel: View {
 
   // MARK: - Stored Properties
 
-  /// The selected color.
-  @State private var color: Color = .white
+  /// The hue of the color.
+  @Binding var hue: Angle
+
+  /// The saturation of the color.
+  @Binding var saturation: Double
+
+  /// The selected color harmony scheme.
+  let scheme: Scheme
+
+  // MARK: - Computed Properties
+
+  /// The additional colors in the current harmony color scheme.
+  private var colors: [HSB] {
+    scheme.colors(from: hue, saturation: saturation)
+  }
 
   // MARK: - Body
 
   var body: some View {
     GeometryReader { geometry in
+      let frame = geometry.frame(in: .local)
+
       ControlPoint(
-        color: $color,
-        center: geometry.frame(in: .local).center,
-        radius: geometry.size.width / 2
+        hue: $hue,
+        saturation: $saturation,
+        frame: frame
       )
+
+      ForEach(colors) { color in
+        ColorPoint(color: color.color)
+          .frame(width: 32, height: 32)
+          .position(color.position(in: frame))
+          .transition(.scale.combined(with: .blurReplace))
+      }
     }
     .aspectRatio(contentMode: .fit)
     .background {
       colorWheel
     }
+    .animation(.snappy, value: scheme)
   }
 
   // MARK: - Subviews
@@ -49,6 +72,10 @@ struct ColorWheel: View {
 // MARK: - Previews
 
 #Preview {
-  ColorWheel()
-    .padding(48)
+  ColorWheel(
+    hue: .constant(.zero),
+    saturation: .constant(1),
+    scheme: .triad
+  )
+  .padding(48)
 }

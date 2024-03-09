@@ -13,52 +13,58 @@ struct ControlPoint: View {
 
   // MARK: - Stored Properties
 
-  /// The binding to the currently selected `Color`.
-  @Binding private var color: Color
+  /// The hue of the currently selected color.
+  @Binding private var hue: Angle
+
+  /// The saturation of the currently selected color.
+  @Binding private var saturation: Double
 
   /// The current position of the control point.
   @State private var position: CGPoint
 
-  /// The center of the circle the control point is positioned in.
-  private let center: CGPoint
-
-  /// The radius of the circle the control point is positioned in.
-  private let radius: CGFloat
+  /// The frame of the circle.
+  private let frame: CGRect
 
   // MARK: - Computed Properties
+
+  /// The center of the circle.
+  var center: CGPoint {
+    frame.center
+  }
+
+  /// The radius of the circle.
+  var radius: CGFloat {
+    frame.width / 2
+  }
 
   /// The vector of the control point that points to the center of the circle.
   private var toCenter: CGPoint {
     center - position
   }
 
-  /// The hue of the current color.
-  private var hue: Angle {
-    let normalizedToCenter = toCenter.normalized
-    let angle = atan2(normalizedToCenter.y, normalizedToCenter.x) + .pi
-    return .radians(angle / (.pi * 2))
-  }
-
-  /// The saturation of the current color.
-  private var saturation: CGFloat {
-    toCenter.magnitude / radius
+  /// The currently selected color.
+  private var color: Color {
+    Color(hue: hue, saturation: saturation, brightness: 1)
   }
 
   // MARK: - Body
 
-  init(color: Binding<Color>, center: CGPoint, radius: CGFloat) {
-    self._color = color
-    self.position = center
-    self.center = center
-    self.radius = radius
+  init(hue: Binding<Angle>, saturation: Binding<Double>, frame: CGRect) {
+    self._hue = hue
+    self._saturation = saturation
+    self.frame = frame
+
+    self.position = .from(
+      angle: hue.wrappedValue,
+      radius: saturation.wrappedValue,
+      in: frame
+    )
   }
 
   // MARK: - Body
 
   var body: some View {
-    Circle()
-      .fill(color)
-      .stroke(.thinMaterial, lineWidth: 4)
+    ColorPoint(color: color)
       .frame(width: 48, height: 48)
       .position(position)
       .gesture(
@@ -66,12 +72,28 @@ struct ControlPoint: View {
           .onChanged { value in
             position = (value.location - center).limit(radius) + center
 
-            color = Color(
-              hue: hue.radians,
-              saturation: saturation,
-              brightness: 1
-            )
+            updateColor()
           }
       )
+  }
+
+  // MARK: Functions
+
+  /// Updates the color from the coordinates of the control point.
+  private func updateColor() {
+    updateHue()
+    updateSaturation()
+  }
+
+  /// Updates the hue of the color from the angle of the control point.
+  private func updateHue() {
+    let normalizedToCenter = toCenter.normalized
+    let angle = atan2(normalizedToCenter.y, normalizedToCenter.x) + .pi
+    hue = .radians(angle)
+  }
+
+  /// Updates the saturation of the color from the distance of the control point to the center.
+  private func updateSaturation() {
+    saturation = toCenter.magnitude / radius
   }
 }

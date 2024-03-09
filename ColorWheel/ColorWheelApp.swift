@@ -11,8 +11,7 @@ import SwiftUI
 struct ColorWheelApp: App {
   var body: some Scene {
     WindowGroup {
-      ColorWheel()
-        .padding(48)
+      ContentView()
     }
   }
 }
