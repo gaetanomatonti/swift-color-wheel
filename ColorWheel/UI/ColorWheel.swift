@@ -12,19 +12,19 @@ struct ColorWheel: View {
 
   // MARK: - Stored Properties
 
-  /// The selected color harmony scheme.
-  @Binding var scheme: Scheme
-
   /// The hue of the color.
-  @State private var hue: Angle = .zero
+  @Binding var hue: Angle
 
   /// The saturation of the color.
-  @State private var saturation: Double = 1
+  @Binding var saturation: Double
+
+  /// The selected color harmony scheme.
+  let scheme: Scheme
 
   // MARK: - Computed Properties
 
   /// The additional colors in the current harmony color scheme.
-  var colors: [HSB] {
+  private var colors: [HSB] {
     scheme.colors(from: hue, saturation: saturation)
   }
 
@@ -51,10 +51,7 @@ struct ColorWheel: View {
     .background {
       colorWheel
     }
-    .animation(.bouncy, value: scheme)
-    .onChange(of: colors) { oldValue, newValue in
-      print(newValue.map(\.hue))
-    }
+    .animation(.snappy, value: scheme)
   }
 
   // MARK: - Subviews
@@ -75,6 +72,10 @@ struct ColorWheel: View {
 // MARK: - Previews
 
 #Preview {
-  ColorWheel(scheme: .constant(.complementary))
-    .padding(48)
+  ColorWheel(
+    hue: .constant(.zero),
+    saturation: .constant(1),
+    scheme: .triad
+  )
+  .padding(48)
 }

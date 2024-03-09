@@ -75,26 +75,26 @@ extension Scheme {
 
       case .analogous:
         return [
-          HSB(id: 0, hue: hue - .degrees(30), saturation: saturation, brightness: 1),
-          HSB(id: 1, hue: hue + .degrees(30), saturation: saturation, brightness: 1),
+          HSB(id: 1, hue: hue - .degrees(30), saturation: saturation, brightness: 1),
+          HSB(id: 2, hue: hue + .degrees(30), saturation: saturation, brightness: 1),
         ]
 
       case .complementary:
         return [
-          HSB(id: 0, hue: hue + .degrees(180), saturation: saturation, brightness: 1),
+          HSB(id: 1, hue: hue + .degrees(180), saturation: saturation, brightness: 1),
         ]
 
       case .triad:
         return [
-          HSB(id: 0, hue: hue + .degrees(120), saturation: saturation, brightness: 1),
-          HSB(id: 1, hue: hue + .degrees(240), saturation: saturation, brightness: 1),
+          HSB(id: 1, hue: hue - .degrees(120), saturation: saturation, brightness: 1),
+          HSB(id: 2, hue: hue + .degrees(120), saturation: saturation, brightness: 1),
         ]
 
       case .square:
         return [
-          HSB(id: 0, hue: hue + .degrees(90), saturation: saturation, brightness: 1),
-          HSB(id: 1, hue: hue + .degrees(180), saturation: saturation, brightness: 1),
-          HSB(id: 2, hue: hue + .degrees(270), saturation: saturation, brightness: 1),
+          HSB(id: 1, hue: hue + .degrees(90), saturation: saturation, brightness: 1),
+          HSB(id: 2, hue: hue + .degrees(180), saturation: saturation, brightness: 1),
+          HSB(id: 3, hue: hue + .degrees(270), saturation: saturation, brightness: 1),
         ]
     }
   }

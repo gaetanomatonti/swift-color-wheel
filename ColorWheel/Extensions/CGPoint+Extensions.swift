@@ -65,11 +65,7 @@ extension CGPoint {
 
     return normalized * maximum
   }
-}
-
-// MARK: - HSB
-
-extension CGPoint {
+  
   /// Computes the cartesian-coordinates from polar-coordinates.
   /// - Parameters:
   ///   - angle: The angle of the coordinates.
