@@ -43,7 +43,7 @@ struct ColorWheel: View {
       ForEach(colors) { color in
         Circle()
           .fill(color.color)
-          .stroke(.thinMaterial, lineWidth: 2)
+          .stroke(.thinMaterial, lineWidth: 4)
           .frame(width: 32, height: 32)
           .position(color.position(in: frame))
           .transition(.scale.combined(with: .blurReplace))
@@ -54,6 +54,9 @@ struct ColorWheel: View {
       colorWheel
     }
     .animation(.bouncy, value: scheme)
+    .onChange(of: colors) { oldValue, newValue in
+      print(newValue.map(\.hue))
+    }
   }
 
   // MARK: - Subviews

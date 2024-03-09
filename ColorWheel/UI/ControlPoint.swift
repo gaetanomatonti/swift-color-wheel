@@ -44,11 +44,7 @@ struct ControlPoint: View {
 
   /// The currently selected color.
   private var color: Color {
-    Color(
-      hue: hue.degrees / 360,
-      saturation: saturation,
-      brightness: 1
-    )
+    Color(hue: hue, saturation: saturation, brightness: 1)
   }
 
   // MARK: - Body

@@ -75,8 +75,8 @@ extension Scheme {
 
       case .analogous:
         return [
-          HSB(id: 0, hue: hue - .radians(30), saturation: saturation, brightness: 1),
-          HSB(id: 1, hue: hue + .radians(30), saturation: saturation, brightness: 1),
+          HSB(id: 0, hue: hue - .degrees(30), saturation: saturation, brightness: 1),
+          HSB(id: 1, hue: hue + .degrees(30), saturation: saturation, brightness: 1),
         ]
 
       case .complementary:
