@@ -64,9 +64,7 @@ struct ControlPoint: View {
   // MARK: - Body
 
   var body: some View {
-    Circle()
-      .fill(color)
-      .stroke(.thinMaterial, lineWidth: 4)
+    ColorPoint(color: color)
       .frame(width: 48, height: 48)
       .position(position)
       .gesture(

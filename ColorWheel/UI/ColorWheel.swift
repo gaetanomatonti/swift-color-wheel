@@ -41,9 +41,7 @@ struct ColorWheel: View {
       )
 
       ForEach(colors) { color in
-        Circle()
-          .fill(color.color)
-          .stroke(.thinMaterial, lineWidth: 4)
+        ColorPoint(color: color.color)
           .frame(width: 32, height: 32)
           .position(color.position(in: frame))
           .transition(.scale.combined(with: .blurReplace))
