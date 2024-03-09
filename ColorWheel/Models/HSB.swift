@@ -9,9 +9,11 @@ import Foundation
 import SwiftUI
 
 /// A representation of a color expressed in HSB (Hue-Saturation-Brightness) values.
-struct HSB: Hashable {
+struct HSB: Hashable, Identifiable {
 
   // MARK: - Stored Properties
+
+  let id: Int
 
   /// The hue value.
   let hue: Angle
@@ -24,7 +26,8 @@ struct HSB: Hashable {
 
   // MARK: - Init
 
-  init(hue: Angle, saturation: Double, brightness: Double) {
+  init(id: Int, hue: Angle, saturation: Double, brightness: Double) {
+    self.id = id
     self.hue = hue
     self.saturation = saturation
     self.brightness = brightness
@@ -42,11 +45,5 @@ struct HSB: Hashable {
   /// - Returns: The coordinates of the color in the passed rectangle.
   func position(in rect: CGRect) -> CGPoint {
     .from(angle: hue, radius: saturation, in: rect)
-  }
-}
-
-extension HSB: Identifiable {
-  var id: Int {
-    hashValue
   }
 }

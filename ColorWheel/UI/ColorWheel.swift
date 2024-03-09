@@ -13,7 +13,7 @@ struct ColorWheel: View {
   // MARK: - Stored Properties
 
   /// The selected color harmony scheme.
-  @State private var scheme: Scheme = .complementary
+  @Binding var scheme: Scheme
 
   /// The hue of the color.
   @State private var hue: Angle = .zero
@@ -46,12 +46,14 @@ struct ColorWheel: View {
           .stroke(.thinMaterial, lineWidth: 2)
           .frame(width: 32, height: 32)
           .position(color.position(in: frame))
+          .transition(.scale.combined(with: .blurReplace))
       }
     }
     .aspectRatio(contentMode: .fit)
     .background {
       colorWheel
     }
+    .animation(.bouncy, value: scheme)
   }
 
   // MARK: - Subviews
@@ -72,6 +74,6 @@ struct ColorWheel: View {
 // MARK: - Previews
 
 #Preview {
-  ColorWheel()
+  ColorWheel(scheme: .constant(.complementary))
     .padding(48)
 }

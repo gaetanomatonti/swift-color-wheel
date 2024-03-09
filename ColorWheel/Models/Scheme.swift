@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 /// An enumeration of the possible color harmony schemes.
-enum Scheme {
+enum Scheme: Int, CaseIterable {
   /// A monochromatic scheme.
   ///
   /// This scheme does not provide additional colors.
@@ -36,6 +36,32 @@ enum Scheme {
   case square
 }
 
+// MARK: - Computed Properties
+
+extension Scheme {
+  /// The title of the scheme.
+  var title: String {
+    switch self {
+      case .monochromatic:
+        "Monochromatic"
+
+      case .analogous:
+        "Analogous"
+
+      case .complementary:
+        "Complementary"
+
+      case .triad:
+        "Triad"
+
+      case .square:
+        "Square"
+    }
+  }
+}
+
+// MARK: - Functions
+
 extension Scheme {
   /// Computes the additional colors in the harmony schemes starting from the passed hue and saturation.
   /// - Parameters:
@@ -49,26 +75,26 @@ extension Scheme {
 
       case .analogous:
         return [
-          HSB(hue: hue - .radians(30), saturation: saturation, brightness: 1),
-          HSB(hue: hue + .radians(30), saturation: saturation, brightness: 1),
+          HSB(id: 0, hue: hue - .radians(30), saturation: saturation, brightness: 1),
+          HSB(id: 1, hue: hue + .radians(30), saturation: saturation, brightness: 1),
         ]
 
       case .complementary:
         return [
-          HSB(hue: hue + .degrees(180), saturation: saturation, brightness: 1),
+          HSB(id: 0, hue: hue + .degrees(180), saturation: saturation, brightness: 1),
         ]
 
       case .triad:
         return [
-          HSB(hue: hue + .degrees(120), saturation: saturation, brightness: 1),
-          HSB(hue: hue + .degrees(240), saturation: saturation, brightness: 1),
+          HSB(id: 0, hue: hue + .degrees(120), saturation: saturation, brightness: 1),
+          HSB(id: 1, hue: hue + .degrees(240), saturation: saturation, brightness: 1),
         ]
 
       case .square:
         return [
-          HSB(hue: hue + .degrees(90), saturation: saturation, brightness: 1),
-          HSB(hue: hue + .degrees(180), saturation: saturation, brightness: 1),
-          HSB(hue: hue + .degrees(270), saturation: saturation, brightness: 1),
+          HSB(id: 0, hue: hue + .degrees(90), saturation: saturation, brightness: 1),
+          HSB(id: 1, hue: hue + .degrees(180), saturation: saturation, brightness: 1),
+          HSB(id: 2, hue: hue + .degrees(270), saturation: saturation, brightness: 1),
         ]
     }
   }
