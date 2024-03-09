@@ -32,7 +32,7 @@ struct ControlPoint: View {
     frame.center
   }
 
-  /// The radius of the center.
+  /// The radius of the circle.
   var radius: CGFloat {
     frame.width / 2
   }
