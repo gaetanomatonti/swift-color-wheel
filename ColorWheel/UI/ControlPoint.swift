@@ -88,9 +88,7 @@ struct ControlPoint: View {
 
   /// Updates the hue of the color from the angle of the control point.
   private func updateHue() {
-    let normalizedToCenter = toCenter.normalized
-    let angle = atan2(normalizedToCenter.y, normalizedToCenter.x)
-    hue = .radians(angle)
+    hue = toCenter.normalized.heading
   }
 
   /// Updates the saturation of the color from the distance of the control point to the center.
