@@ -40,7 +40,7 @@ struct ControlPoint: View {
 
   /// The vector of the control point that points to the center of the circle.
   private var toCenter: CGPoint {
-    center - position
+    position - center
   }
 
   /// The currently selected color.
@@ -89,7 +89,7 @@ struct ControlPoint: View {
   /// Updates the hue of the color from the angle of the control point.
   private func updateHue() {
     let normalizedToCenter = toCenter.normalized
-    let angle = atan2(normalizedToCenter.y, normalizedToCenter.x) + .pi
+    let angle = atan2(normalizedToCenter.y, normalizedToCenter.x)
     hue = .radians(angle)
   }
 
