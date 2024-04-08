@@ -27,11 +27,11 @@ half3 hsb2rgb(half3 color) {
 
 [[ stitchable ]] half4 colorWheel(float2 position, float4 bounds) {
   float2 st = position / bounds.zw;
-  float2 center = float2(0.5) - st;
+  float2 center = st - float2(0.5);
   float angle = atan2(center.y, center.x);
   float radius = length(center) * 2.0;
 
-  float hue = (angle / TWO_PI) + 0.5;
+  float hue = angle / M_TWO_PI_H;
   float saturation = radius;
   float brightness = 1.0;
 
