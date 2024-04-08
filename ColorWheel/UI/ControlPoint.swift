@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Vectors
 
 /// A view that displays a draggable control point that controls color selection.
 struct ControlPoint: View {

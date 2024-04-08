@@ -1,0 +1,15 @@
+{
+  "originHash" : "401db2451f59777aeb1f617b9a31716848f38c69b14026149a71ae0a9e8678e3",
+  "pins" : [
+    {
+      "identity" : "swift-vectors",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gaetanomatonti/swift-vectors",
+      "state" : {
+        "branch" : "feature/add-vector",
+        "revision" : "d8a31d9c898b2056e07fd95f39541054ac22e437"
+      }
+    }
+  ],
+  "version" : 3
+}
