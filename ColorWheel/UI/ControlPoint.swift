@@ -55,9 +55,9 @@ struct ControlPoint: View {
     self._saturation = saturation
     self.frame = frame
 
-    self.position = .from(
+    self.position = CGPoint(
       angle: hue.wrappedValue,
-      radius: saturation.wrappedValue,
+      percentage: saturation.wrappedValue,
       in: frame
     )
   }

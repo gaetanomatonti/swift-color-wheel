@@ -44,6 +44,6 @@ struct HSB: Hashable, Identifiable {
   /// - Parameter rect: The rectangle in which to position the color.
   /// - Returns: The coordinates of the color in the passed rectangle.
   func position(in rect: CGRect) -> CGPoint {
-    .from(angle: hue, radius: saturation, in: rect)
+    CGPoint(angle: hue, percentage: saturation, in: rect)
   }
 }
