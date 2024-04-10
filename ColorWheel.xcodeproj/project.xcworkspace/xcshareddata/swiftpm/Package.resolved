@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/gaetanomatonti/swift-vectors",
       "state" : {
-        "branch" : "feature/polar-coordinates",
-        "revision" : "c1f381318facfc0c8875bb8c7c19e20d197dc5bd"
+        "branch" : "develop",
+        "revision" : "a5200621c805154f19b29baa13cb81650440f3c7"
       }
     }
   ],

@@ -430,7 +430,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/gaetanomatonti/swift-vectors";
 			requirement = {
-				branch = "feature/polar-coordinates";
+				branch = develop;
 				kind = branch;
 			};
 		};
