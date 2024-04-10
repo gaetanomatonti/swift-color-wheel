@@ -57,8 +57,8 @@ struct ControlPoint: View {
 
     self.position = CGPoint(
       angle: hue.wrappedValue,
-      percentage: saturation.wrappedValue,
-      in: frame
+      radius: saturation.wrappedValue * frame.width / 2,
+      center: frame.center
     )
   }
 
