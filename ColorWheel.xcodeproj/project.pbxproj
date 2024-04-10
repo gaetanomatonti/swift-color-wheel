@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B2E405C2B9BAD7C00FB19C1 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E405B2B9BAD7C00FB19C1 /* CGPoint+Extensions.swift */; };
+		9B2709A82BC4A0EB0002C574 /* Vectors in Frameworks */ = {isa = PBXBuildFile; productRef = 9B2709A72BC4A0EB0002C574 /* Vectors */; };
 		9B2E40602B9BB02000FB19C1 /* ControlPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E405F2B9BB02000FB19C1 /* ControlPoint.swift */; };
 		9B2E40632B9BB22F00FB19C1 /* CGRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E40622B9BB22F00FB19C1 /* CGRect+Extension.swift */; };
 		9B2E40652B9BCA2400FB19C1 /* Scheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E40642B9BCA2400FB19C1 /* Scheme.swift */; };
@@ -25,7 +25,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9B2E405B2B9BAD7C00FB19C1 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		9B2E405F2B9BB02000FB19C1 /* ControlPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPoint.swift; sourceTree = "<group>"; };
 		9B2E40622B9BB22F00FB19C1 /* CGRect+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extension.swift"; sourceTree = "<group>"; };
 		9B2E40642B9BCA2400FB19C1 /* Scheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheme.swift; sourceTree = "<group>"; };
@@ -48,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B2709A82BC4A0EB0002C574 /* Vectors in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +77,6 @@
 		9B2E40612B9BB22200FB19C1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				9B2E405B2B9BAD7C00FB19C1 /* CGPoint+Extensions.swift */,
 				9B2E40622B9BB22F00FB19C1 /* CGRect+Extension.swift */,
 				9B2E406C2B9BE35B00FB19C1 /* Color+Extensions.swift */,
 				9B6D60562B9C7516004D511D /* Angle+Extensions.swift */,
@@ -148,6 +147,9 @@
 			dependencies = (
 			);
 			name = ColorWheel;
+			packageProductDependencies = (
+				9B2709A72BC4A0EB0002C574 /* Vectors */,
+			);
 			productName = ColorWheel;
 			productReference = 9BC482942B9A6FEF00F5A777 /* ColorWheel.app */;
 			productType = "com.apple.product-type.application";
@@ -176,6 +178,9 @@
 				Base,
 			);
 			mainGroup = 9BC4828B2B9A6FEF00F5A777;
+			packageReferences = (
+				9B2709A62BC4A0EB0002C574 /* XCRemoteSwiftPackageReference "swift-vectors" */,
+			);
 			productRefGroup = 9BC482952B9A6FEF00F5A777 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -214,7 +219,6 @@
 				9B6D60592B9C761A004D511D /* ContentView.swift in Sources */,
 				9B2E40652B9BCA2400FB19C1 /* Scheme.swift in Sources */,
 				9BC482982B9A6FEF00F5A777 /* ColorWheelApp.swift in Sources */,
-				9B2E405C2B9BAD7C00FB19C1 /* CGPoint+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +424,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9B2709A62BC4A0EB0002C574 /* XCRemoteSwiftPackageReference "swift-vectors" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gaetanomatonti/swift-vectors";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9B2709A72BC4A0EB0002C574 /* Vectors */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9B2709A62BC4A0EB0002C574 /* XCRemoteSwiftPackageReference "swift-vectors" */;
+			productName = Vectors;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9BC4828C2B9A6FEF00F5A777 /* Project object */;
 }

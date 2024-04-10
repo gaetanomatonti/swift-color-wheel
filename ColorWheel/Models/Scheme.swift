@@ -63,39 +63,46 @@ extension Scheme {
 // MARK: - Functions
 
 extension Scheme {
-  /// Computes the additional colors in the harmony schemes starting from the passed hue and saturation.
-  /// - Parameters:
-  ///   - hue: The hue of the starting color.
-  ///   - saturation: The saturation of the starting color.
-  /// - Returns: The array of `HSB` colors in the harmony scheme.
-  func colors(from hue: Angle, saturation: CGFloat) -> [HSB] {
+  /// The array containing the angles of the hue shifts in the scheme.
+  var shiftAngles: [Angle] {
     switch self {
       case .monochromatic:
         return []
 
       case .analogous:
         return [
-          HSB(id: 1, hue: hue - .degrees(30), saturation: saturation, brightness: 1),
-          HSB(id: 2, hue: hue + .degrees(30), saturation: saturation, brightness: 1),
+          .degrees(-30),
+          .degrees(30),
         ]
 
       case .complementary:
         return [
-          HSB(id: 1, hue: hue + .degrees(180), saturation: saturation, brightness: 1),
+          .degrees(180),
         ]
 
       case .triad:
         return [
-          HSB(id: 1, hue: hue - .degrees(120), saturation: saturation, brightness: 1),
-          HSB(id: 2, hue: hue + .degrees(120), saturation: saturation, brightness: 1),
+          .degrees(120),
+          .degrees(240),
         ]
 
       case .square:
         return [
-          HSB(id: 1, hue: hue + .degrees(90), saturation: saturation, brightness: 1),
-          HSB(id: 2, hue: hue + .degrees(180), saturation: saturation, brightness: 1),
-          HSB(id: 3, hue: hue + .degrees(270), saturation: saturation, brightness: 1),
+          .degrees(90),
+          .degrees(180),
+          .degrees(270),
         ]
+    }
+  }
+
+  /// Computes the additional colors in the harmony schemes starting from the passed hue and saturation.
+  /// - Parameters:
+  ///   - hue: The hue of the starting color.
+  ///   - saturation: The saturation of the starting color.
+  /// - Returns: The array of `HSB` colors in the harmony scheme.
+  func colors(from hue: Angle, saturation: CGFloat) -> [HSB] {
+    shiftAngles.enumerated().map { index, angle in
+      HSB(id: index + 1, hue: hue + angle, saturation: saturation, brightness: 1)
     }
   }
 }

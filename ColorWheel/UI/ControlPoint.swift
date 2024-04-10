@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Vectors
 
 /// A view that displays a draggable control point that controls color selection.
 struct ControlPoint: View {
@@ -39,7 +40,7 @@ struct ControlPoint: View {
 
   /// The vector of the control point that points to the center of the circle.
   private var toCenter: CGPoint {
-    center - position
+    position - center
   }
 
   /// The currently selected color.
@@ -54,10 +55,10 @@ struct ControlPoint: View {
     self._saturation = saturation
     self.frame = frame
 
-    self.position = .from(
+    self.position = CGPoint(
       angle: hue.wrappedValue,
-      radius: saturation.wrappedValue,
-      in: frame
+      radius: saturation.wrappedValue * frame.width / 2,
+      center: frame.center
     )
   }
 
@@ -87,9 +88,7 @@ struct ControlPoint: View {
 
   /// Updates the hue of the color from the angle of the control point.
   private func updateHue() {
-    let normalizedToCenter = toCenter.normalized
-    let angle = atan2(normalizedToCenter.y, normalizedToCenter.x) + .pi
-    hue = .radians(angle)
+    hue = toCenter.normalized.heading
   }
 
   /// Updates the saturation of the color from the distance of the control point to the center.

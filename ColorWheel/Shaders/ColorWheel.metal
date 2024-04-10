@@ -8,7 +8,7 @@
 #include <metal_stdlib>
 using namespace metal;
 
-#define TWO_PI (M_PI_H * 2)
+#define M_TWO_PI_H (M_PI_H * 2)
 
 half3 mod(half3 x, half3 y) {
   return x - y * floor(x / y);
