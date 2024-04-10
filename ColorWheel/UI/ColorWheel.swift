@@ -43,7 +43,7 @@ struct ColorWheel: View {
       ForEach(colors) { color in
         ColorPoint(color: color.color)
           .frame(width: 32, height: 32)
-          .position(color.position(in: frame))
+          .position(position(for: color, in: frame))
           .transition(.scale.combined(with: .blurReplace))
       }
     }
@@ -66,6 +66,15 @@ struct ColorWheel: View {
           .blur(radius: 60)
           .opacity(0.4)
       }
+  }
+
+  /// Computes the coordinates of the color in the polar coordinates of the passed rectangle.
+  /// - Parameters:
+  ///   - color: The color to position on the color wheel.
+  ///   - rect: The rectangle in which to position the color.
+  /// - Returns: The coordinates of the color in the passed rectangle.
+  private func position(for color: HSB, in rect: CGRect) -> CGPoint {
+    CGPoint(angle: color.hue, radius: color.saturation * rect.width / 2, center: rect.center)
   }
 }
 
