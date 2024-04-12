@@ -24,6 +24,7 @@
 		9B71497E2BC9E5D3006F9BAD /* ClosedRange+PercentageConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B71497D2BC9E5D3006F9BAD /* ClosedRange+PercentageConvertible.swift */; };
 		9B7149812BC9E656006F9BAD /* ColorSlider+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7149802BC9E656006F9BAD /* ColorSlider+Style.swift */; };
 		9B78F2822BC9E80900B0275D /* ColorSlider+Grabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B78F2812BC9E80900B0275D /* ColorSlider+Grabber.swift */; };
+		9B78F2842BC9F07F00B0275D /* ColorSlider+Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B78F2832BC9F07F00B0275D /* ColorSlider+Track.swift */; };
 		9BC482982B9A6FEF00F5A777 /* ColorWheelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC482972B9A6FEF00F5A777 /* ColorWheelApp.swift */; };
 		9BC4829A2B9A6FEF00F5A777 /* ColorWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC482992B9A6FEF00F5A777 /* ColorWheel.swift */; };
 		9BC4829C2B9A6FF000F5A777 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC4829B2B9A6FF000F5A777 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		9B71497D2BC9E5D3006F9BAD /* ClosedRange+PercentageConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClosedRange+PercentageConvertible.swift"; sourceTree = "<group>"; };
 		9B7149802BC9E656006F9BAD /* ColorSlider+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorSlider+Style.swift"; sourceTree = "<group>"; };
 		9B78F2812BC9E80900B0275D /* ColorSlider+Grabber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorSlider+Grabber.swift"; sourceTree = "<group>"; };
+		9B78F2832BC9F07F00B0275D /* ColorSlider+Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorSlider+Track.swift"; sourceTree = "<group>"; };
 		9BC482942B9A6FEF00F5A777 /* ColorWheel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorWheel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BC482972B9A6FEF00F5A777 /* ColorWheelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelApp.swift; sourceTree = "<group>"; };
 		9BC482992B9A6FEF00F5A777 /* ColorWheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheel.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				9B479CEA2BC818820029BA60 /* ColorSlider.swift */,
 				9B78F2812BC9E80900B0275D /* ColorSlider+Grabber.swift */,
 				9B7149802BC9E656006F9BAD /* ColorSlider+Style.swift */,
+				9B78F2832BC9F07F00B0275D /* ColorSlider+Track.swift */,
 			);
 			path = ColorSlider;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				9B2E406F2B9BE4F300FB19C1 /* ColorPoint.swift in Sources */,
 				9B71497C2BC9E54F006F9BAD /* Angle+PercentageConvertible.swift in Sources */,
 				9B6D60592B9C761A004D511D /* ContentView.swift in Sources */,
+				9B78F2842BC9F07F00B0275D /* ColorSlider+Track.swift in Sources */,
 				9B2E40652B9BCA2400FB19C1 /* Scheme.swift in Sources */,
 				9B7149782BC9E3C6006F9BAD /* PercentageConvertible.swift in Sources */,
 				9BC482982B9A6FEF00F5A777 /* ColorWheelApp.swift in Sources */,

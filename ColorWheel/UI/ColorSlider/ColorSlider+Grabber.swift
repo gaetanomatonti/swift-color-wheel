@@ -28,7 +28,7 @@ extension ColorSlider {
     /// The value of the slider.
     @Binding var value: Value
 
-    @Environment(\.colorSliderGrabberStyle) var grabberStyle
+    @Environment(\.colorSliderGrabberStyle) var style
 
     /// The percentage of the value in the range.
     private var percentage: CGFloat {
@@ -51,7 +51,7 @@ extension ColorSlider {
 
     var body: some View {
       Circle()
-        .fill(grabberStyle)
+        .fill(style)
         .stroke(.thinMaterial, lineWidth: 4)
         .position(position)
         .gesture(

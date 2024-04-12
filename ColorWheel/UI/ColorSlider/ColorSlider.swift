@@ -8,12 +8,8 @@
 import SwiftUI
 import Vectors
 
+/// A slider component to select values in a closed range.
 struct ColorSlider<Value>: View where Value: PercentageConvertible {
-
-  // MARK: - Constants
-
-  /// The height of the slider.
-  private let height: CGFloat = 48
 
   // MARK: - Stored Properties
 
@@ -22,20 +18,6 @@ struct ColorSlider<Value>: View where Value: PercentageConvertible {
 
   /// The value of the slider.
   @Binding var value: Value
-
-  // MARK: - Computed Properties
-
-  @Environment(\.backgroundStyle) var backgroundStyle
-
-  /// The shape of the slider track.
-  private var shape: some Shape {
-    RoundedRectangle(cornerRadius: 24, style: .continuous)
-  }
-
-  /// The radius of the grabber.
-  private var grabberRadius: CGFloat {
-    height / 2
-  }
 
   // MARK: - Init
 
@@ -49,16 +31,13 @@ struct ColorSlider<Value>: View where Value: PercentageConvertible {
   var body: some View {
     GeometryReader { geometry in
       ZStack {
-        shape
-          .fill(backgroundStyle ?? AnyShapeStyle(.background))
-          .stroke(.thinMaterial, lineWidth: 2)
-          .frame(width: geometry.size.width)
-        
+        Track(frame: geometry.frame(in: .local))
+
         Grabber(in: geometry.frame(in: .local), value: $value, range: range)
       }
     }
     .frame(height: 48)
-  }  
+  }
 }
 
 // MARK: - Previews

@@ -48,11 +48,11 @@ struct ContentView: View {
       )
       
       ColorSlider(value: $hue.absolute, range: .zero...Angle(degrees: 360))
-        .backgroundStyle(ShaderLibrary.hue(.boundingRect))
+        .colorSliderTrackStyle(ShaderLibrary.hue(.boundingRect))
         .colorSliderGrabberStyle(Color(hue: hue, saturation: 1, brightness: 1))
       
       ColorSlider(value: $saturation)
-        .backgroundStyle(
+        .colorSliderTrackStyle(
           .linearGradient(
             colors: [.white, Color(hue: hue, saturation: 1, brightness: 1)],
             startPoint: .leading,
@@ -62,7 +62,7 @@ struct ContentView: View {
         .colorSliderGrabberStyle(.white)
       
       ColorSlider(value: $brightness)
-        .backgroundStyle(
+        .colorSliderTrackStyle(
           .linearGradient(
             colors: [.black, Color(hue: hue, saturation: 1, brightness: 1)],
             startPoint: .leading,
