@@ -14,6 +14,7 @@
 		9B2E40682B9BD87300FB19C1 /* HSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E40672B9BD87300FB19C1 /* HSB.swift */; };
 		9B2E406D2B9BE35B00FB19C1 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E406C2B9BE35B00FB19C1 /* Color+Extensions.swift */; };
 		9B2E406F2B9BE4F300FB19C1 /* ColorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E406E2B9BE4F300FB19C1 /* ColorPoint.swift */; };
+		9B479CEB2BC818820029BA60 /* ColorSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B479CEA2BC818820029BA60 /* ColorSlider.swift */; };
 		9B6D60572B9C7516004D511D /* Angle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D60562B9C7516004D511D /* Angle+Extensions.swift */; };
 		9B6D60592B9C761A004D511D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D60582B9C761A004D511D /* ContentView.swift */; };
 		9B6D605D2B9C76CA004D511D /* GradientPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D605C2B9C76CA004D511D /* GradientPalette.swift */; };
@@ -31,6 +32,7 @@
 		9B2E40672B9BD87300FB19C1 /* HSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSB.swift; sourceTree = "<group>"; };
 		9B2E406C2B9BE35B00FB19C1 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		9B2E406E2B9BE4F300FB19C1 /* ColorPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPoint.swift; sourceTree = "<group>"; };
+		9B479CEA2BC818820029BA60 /* ColorSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSlider.swift; sourceTree = "<group>"; };
 		9B6D60562B9C7516004D511D /* Angle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+Extensions.swift"; sourceTree = "<group>"; };
 		9B6D60582B9C761A004D511D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9B6D605C2B9C76CA004D511D /* GradientPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientPalette.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				9B2E405F2B9BB02000FB19C1 /* ControlPoint.swift */,
 				9B2E406E2B9BE4F300FB19C1 /* ColorPoint.swift */,
 				9B6D605C2B9C76CA004D511D /* GradientPalette.swift */,
+				9B479CEA2BC818820029BA60 /* ColorSlider.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B479CEB2BC818820029BA60 /* ColorSlider.swift in Sources */,
 				9B2E40602B9BB02000FB19C1 /* ControlPoint.swift in Sources */,
 				9B6D60572B9C7516004D511D /* Angle+Extensions.swift in Sources */,
 				9B2E40682B9BD87300FB19C1 /* HSB.swift in Sources */,
