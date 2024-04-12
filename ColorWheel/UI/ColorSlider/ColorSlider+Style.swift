@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum ColorSliderGrabberStyle: EnvironmentKey {
+fileprivate enum ColorSliderGrabberStyle: EnvironmentKey {
   static var defaultValue: AnyShapeStyle = AnyShapeStyle(Color.blue)
 }
 

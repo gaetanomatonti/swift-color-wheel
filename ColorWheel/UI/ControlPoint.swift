@@ -14,6 +14,9 @@ struct ControlPoint: View {
 
   // MARK: - Stored Properties
 
+  /// The current position of the control point.
+  @State private var position: CGPoint
+
   /// The hue of the currently selected color.
   @Binding private var hue: Angle
 
@@ -21,10 +24,7 @@ struct ControlPoint: View {
   @Binding private var saturation: Double
 
   /// The brightness of the currently selected color.
-  private var brightness: Double
-
-  /// The current position of the control point.
-  @State private var position: CGPoint
+  private let brightness: Double
 
   /// The frame of the circle.
   private let frame: CGRect
@@ -54,11 +54,7 @@ struct ControlPoint: View {
     self.brightness = brightness
     self.frame = frame
 
-    self.position = CGPoint(
-      angle: hue.wrappedValue,
-      radius: saturation.wrappedValue * frame.width / 2,
-      center: frame.center
-    )
+    self.position = Self.position(from: hue.wrappedValue, saturation: saturation.wrappedValue, in: frame)
   }
 
   // MARK: - Body
@@ -83,25 +79,44 @@ struct ControlPoint: View {
 
   // MARK: Functions
 
-  /// Updates the color from the coordinates of the control point.
+  /// Updates the values of the color from the coordinates of the control point.
+  /// - Parameter location: The location of the drag gesture used to compute the new position of the control point.
   private func updateColor(from location: CGPoint) {
+    /// The vector of the control point relative to the center of the wheel.
     let position = (location - center).limit(radius)
+
     updateHue(from: position)
     updateSaturation(from: position)
   }
 
   /// Updates the hue of the color from the angle of the control point.
+  /// - Parameter position: The coordinates of the control point in the frame.
   private func updateHue(from position: CGPoint) {
     hue = position.normalized.heading
   }
 
   /// Updates the saturation of the color from the distance of the control point to the center.
+  /// - Parameter position: The coordinates of the control point in the frame.
   private func updateSaturation(from position: CGPoint) {
     saturation = position.magnitude / radius
   }
   
+  /// Updates the position of the control point from the values of the color.
+  /// - Parameters:
+  ///   - hue: The angle of the color hue.
+  ///   - saturation: The value of the saturation.
   private func updatePosition(from hue: Angle, saturation: CGFloat) {
-    position = CGPoint(
+    position = Self.position(from: hue, saturation: saturation, in: frame)
+  }
+
+  /// Computes the position of the control point from the values of the color.
+  /// - Parameters:
+  ///   - hue: The angle of the color hue.
+  ///   - saturation: The value of the saturation.
+  ///   - frame: The frame that contains the control point.
+  /// - Returns: The coordinates of the control point.
+  private static func position(from hue: Angle, saturation: CGFloat, in frame: CGRect) -> CGPoint {
+    CGPoint(
       angle: hue,
       radius: saturation * frame.width / 2,
       center: frame.center
