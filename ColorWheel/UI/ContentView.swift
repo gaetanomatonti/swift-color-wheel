@@ -18,15 +18,26 @@ struct ContentView: View {
   /// The saturation of the main color.
   @State private var saturation: Double = 1.0
 
+  /// The brightness of the main color.
+  @State private var brightness: Double = 1.0
+
   /// The selected color harmony scheme.
   @State private var scheme: Scheme = .monochromatic
+  
+  private var hueProgress: Binding<Double> {
+    Binding {
+      hue.absolute.degrees / 360
+    } set: { newValue in
+      hue = .degrees(newValue * 360).absolute
+    }
+  }
 
   // MARK: - Computed Properties
 
   /// The colors selected by the harmony scheme.
   var colors: [HSB] {
-    var colors = scheme.colors(from: hue, saturation: saturation)
-    colors.append(HSB(id: 0, hue: hue, saturation: saturation, brightness: 1))
+    var colors = scheme.colors(from: hue, saturation: saturation, brightness: brightness)
+    colors.append(HSB(id: 0, hue: hue, saturation: saturation, brightness: brightness))
 
     return colors.sorted { $0.hue < $1.hue }
   }
@@ -37,8 +48,37 @@ struct ContentView: View {
     VStack(spacing: 48) {
       GradientPalette(colors: colors)
 
-      ColorWheel(hue: $hue, saturation: $saturation, scheme: scheme)
-
+      ColorWheel(
+        hue: $hue,
+        saturation: $saturation,
+        brightness: $brightness,
+        scheme: scheme
+      )
+      
+      ColorSlider(value: hueProgress)
+        .backgroundStyle(ShaderLibrary.hue(.boundingRect))
+        .colorSliderGrabberStyle(Color(hue: hue, saturation: 1, brightness: 1))
+      
+      ColorSlider(value: $saturation)
+        .backgroundStyle(
+          .linearGradient(
+            colors: [.white, Color(hue: hue, saturation: 1, brightness: 1)],
+            startPoint: .leading,
+            endPoint: .trailing
+          )
+        )
+        .colorSliderGrabberStyle(.white)
+      
+      ColorSlider(value: $brightness)
+        .backgroundStyle(
+          .linearGradient(
+            colors: [.black, Color(hue: hue, saturation: 1, brightness: 1)],
+            startPoint: .leading,
+            endPoint: .trailing
+          )
+        )
+        .colorSliderGrabberStyle(.white)
+      
       Picker("Color Scheme", selection: $scheme) {
         ForEach(Scheme.allCases, id: \.self) { scheme in
           Text(scheme.title)

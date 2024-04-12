@@ -37,6 +37,6 @@ struct HSB: Hashable, Identifiable {
 
   /// The `Color` represented in HSB values.
   var color: Color {
-    Color(hue: hue, saturation: saturation, brightness: 1)
+    Color(hue: hue, saturation: saturation, brightness: brightness)
   }
 }

@@ -25,7 +25,7 @@ half3 hsb2rgb(half3 color) {
   return brightness * mix(half3(1.0), rgb, saturation);
 }
 
-[[ stitchable ]] half4 colorWheel(float2 position, float4 bounds) {
+[[ stitchable ]] half4 colorWheel(float2 position, float4 bounds, float brightness) {
   float2 st = position / bounds.zw;
   float2 center = st - float2(0.5);
   float angle = atan2(center.y, center.x);
@@ -33,9 +33,16 @@ half3 hsb2rgb(half3 color) {
 
   float hue = angle / M_TWO_PI_H;
   float saturation = radius;
-  float brightness = 1.0;
 
   half3 rgb = hsb2rgb(half3(hue, saturation, brightness));
+
+  return half4(rgb, 1.0);
+}
+
+[[ stitchable ]] half4 hue(float2 position, float4 bounds) {
+  float hue = position.x / bounds.z;
+
+  half3 rgb = hsb2rgb(half3(hue, 1, 1));
 
   return half4(rgb, 1.0);
 }
