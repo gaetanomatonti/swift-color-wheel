@@ -8,7 +8,7 @@
 import SwiftUI
 import Vectors
 
-struct ColorSlider<Value>: View where Value == Double {
+struct ColorSlider<Value>: View where Value: PercentageRepresentable {
   private let height: CGFloat = 48
     
   /// The value of the slider.
@@ -30,13 +30,13 @@ struct ColorSlider<Value>: View where Value == Double {
   private var minimum: Value {
     range.lowerBound
   }
-  
+
   private var maximum: Value {
     range.upperBound
   }
   
   private var percentage: CGFloat {
-    value / range.upperBound
+    value.percentage(in: range)
   }
   
   let range: ClosedRange<Value>
@@ -74,18 +74,19 @@ struct ColorSlider<Value>: View where Value == Double {
   }
   
   func updateValue(for location: CGPoint, in rect: CGRect) {
-    value = max(0, min(location.x / railsRect(in: rect).width, 1))
+    let percentage = location.x / trackRect(in: rect).width
+    value = range.value(from: percentage)
   }
   
-  func railsRect(in rect: CGRect) -> CGRect {
+  func trackRect(in rect: CGRect) -> CGRect {
     rect.insetBy(dx: grabberRadius, dy: .zero)
   }
   
   func grabberPosition(in rect: CGRect) -> CGPoint {
-    let railsRect = railsRect(in: rect)
+    let trackRect = trackRect(in: rect)
     
     return CGPoint(
-      x: railsRect.minX + railsRect.width * percentage,
+      x: trackRect.minX + trackRect.width * percentage,
       y: rect.midY
     )
   }
@@ -139,3 +140,41 @@ extension View {
     .backgroundStyle(ShaderLibrary.hue(.boundingRect))
 }
 #endif
+
+protocol PercentageRepresentable: Comparable {
+  func percentage(in range: ClosedRange<Self>) -> Double
+
+  static func value(from percentage: Double, in range: ClosedRange<Self>) -> Self
+}
+
+extension PercentageRepresentable where Self: BinaryFloatingPoint {
+  func percentage(in range: ClosedRange<Self>) -> Double {
+    Double((self - range.lowerBound) / (range.upperBound - range.lowerBound))
+  }
+
+  static func value(from percentage: Double, in range: ClosedRange<Self>) -> Self {
+    max(range.lowerBound, min(Self(percentage) * range.upperBound, range.upperBound))
+  }
+}
+
+extension CGFloat: PercentageRepresentable {}
+
+extension Float: PercentageRepresentable {}
+extension Double: PercentageRepresentable {}
+
+extension Angle: PercentageRepresentable {
+  func percentage(in range: ClosedRange<Angle>) -> Double {
+    Double((self.degrees - range.lowerBound.degrees) / (range.upperBound.degrees - range.lowerBound.degrees))
+  }
+
+  static func value(from percentage: Double, in range: ClosedRange<Angle>) -> Angle {
+    let degrees = max(range.lowerBound.degrees, min(percentage * range.upperBound.degrees, range.upperBound.degrees))
+    return .degrees(degrees)
+  }
+}
+
+extension ClosedRange where Bound: PercentageRepresentable {
+  func value(from percentage: Double) -> Bound {
+    Bound.value(from: percentage, in: self)
+  }
+}

@@ -24,14 +24,6 @@ struct ContentView: View {
   /// The selected color harmony scheme.
   @State private var scheme: Scheme = .monochromatic
   
-  private var hueProgress: Binding<Double> {
-    Binding {
-      hue.absolute.degrees / 360
-    } set: { newValue in
-      hue = .degrees(newValue * 360).absolute
-    }
-  }
-
   // MARK: - Computed Properties
 
   /// The colors selected by the harmony scheme.
@@ -49,13 +41,13 @@ struct ContentView: View {
       GradientPalette(colors: colors)
 
       ColorWheel(
-        hue: $hue,
+        hue: $hue.absolute,
         saturation: $saturation,
         brightness: $brightness,
         scheme: scheme
       )
       
-      ColorSlider(value: hueProgress)
+      ColorSlider(value: $hue.absolute, range: .zero...Angle(degrees: 360))
         .backgroundStyle(ShaderLibrary.hue(.boundingRect))
         .colorSliderGrabberStyle(Color(hue: hue, saturation: 1, brightness: 1))
       

@@ -11,10 +11,15 @@ import SwiftUI
 extension Angle {
   /// Creates a new instance of the angle with an absolute (positive) value.
   var absolute: Angle {
-    if radians < .zero {
-      return Angle(radians: radians + .pi * 2)
-    }
+    get {
+      if radians < .zero {
+        return Angle(radians: radians + .pi * 2)
+      }
 
-    return self
+      return self
+    }
+    set {
+      self = newValue.absolute
+    }
   }
 }
