@@ -35,10 +35,12 @@ struct ColorSlider<Value>: View where Value: PercentageConvertible {
 
   var body: some View {
     GeometryReader { geometry in
-      ZStack {
-        Track(frame: geometry.frame(in: .local))
+      let frame = geometry.frame(in: .local)
 
-        Grabber(in: geometry.frame(in: .local), value: $value, range: range)
+      ZStack {
+        Track(frame: frame)
+
+        Grabber(in: frame, value: $value, range: range)
       }
     }
     .frame(height: height)

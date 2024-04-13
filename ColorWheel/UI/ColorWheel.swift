@@ -13,17 +13,17 @@ struct ColorWheel: View {
   // MARK: - Stored Properties
   
   /// The hue of the color.
-  @Binding var hue: Angle
-  
+  @Binding private var hue: Angle
+
   /// The saturation of the color.
-  @Binding var saturation: Double
-  
+  @Binding private var saturation: Double
+
   /// The brightness of the color.
-  @Binding var brightness: Double
-  
+  @Binding private var brightness: Double
+
   /// The selected color harmony scheme.
-  let scheme: Scheme
-  
+  private let scheme: Scheme
+
   /// The shader of the color wheel.
   private var shader: Shader {
     ShaderLibrary.colorWheel(.boundingRect, .float(brightness))
@@ -34,6 +34,15 @@ struct ColorWheel: View {
   /// The additional colors in the current harmony color scheme.
   private var colors: [HSB] {
     scheme.colors(from: hue, saturation: saturation, brightness: brightness)
+  }
+
+  // MARK: - Init
+
+  init(hue: Binding<Angle>, saturation: Binding<Double>, brightness: Binding<Double>, scheme: Scheme) {
+    self._hue = hue
+    self._saturation = saturation
+    self._brightness = brightness
+    self.scheme = scheme
   }
 
   // MARK: - Body
