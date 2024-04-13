@@ -9,23 +9,40 @@ import SwiftUI
 
 /// A view that displays a HSB (Hue-Saturation-Brightness) color wheel.
 struct ColorWheel: View {
-
+  
   // MARK: - Stored Properties
-
+  
   /// The hue of the color.
-  @Binding var hue: Angle
+  @Binding private var hue: Angle
 
   /// The saturation of the color.
-  @Binding var saturation: Double
+  @Binding private var saturation: Double
+
+  /// The brightness of the color.
+  @Binding private var brightness: Double
 
   /// The selected color harmony scheme.
-  let scheme: Scheme
+  private let scheme: Scheme
+
+  /// The shader of the color wheel.
+  private var shader: Shader {
+    ShaderLibrary.colorWheel(.boundingRect, .float(brightness))
+  }
 
   // MARK: - Computed Properties
 
   /// The additional colors in the current harmony color scheme.
   private var colors: [HSB] {
-    scheme.colors(from: hue, saturation: saturation)
+    scheme.colors(from: hue, saturation: saturation, brightness: brightness)
+  }
+
+  // MARK: - Init
+
+  init(hue: Binding<Angle>, saturation: Binding<Double>, brightness: Binding<Double>, scheme: Scheme) {
+    self._hue = hue
+    self._saturation = saturation
+    self._brightness = brightness
+    self.scheme = scheme
   }
 
   // MARK: - Body
@@ -37,6 +54,7 @@ struct ColorWheel: View {
       ControlPoint(
         hue: $hue,
         saturation: $saturation,
+        brightness: brightness,
         frame: frame
       )
 
@@ -58,14 +76,8 @@ struct ColorWheel: View {
 
   private var colorWheel: some View {
     Circle()
-      .fill(ShaderLibrary.colorWheel(.boundingRect))
+      .fill(shader)
       .stroke(.regularMaterial, lineWidth: 4)
-      .background {
-        Circle()
-          .fill(ShaderLibrary.colorWheel(.boundingRect))
-          .blur(radius: 60)
-          .opacity(0.4)
-      }
   }
 
   /// Computes the coordinates of the color in the polar coordinates of the passed rectangle.
@@ -83,7 +95,8 @@ struct ColorWheel: View {
 #Preview {
   ColorWheel(
     hue: .constant(.zero),
-    saturation: .constant(1),
+    saturation: .constant(1), 
+    brightness: .constant(1),
     scheme: .triad
   )
   .padding(48)

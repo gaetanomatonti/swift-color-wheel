@@ -100,9 +100,9 @@ extension Scheme {
   ///   - hue: The hue of the starting color.
   ///   - saturation: The saturation of the starting color.
   /// - Returns: The array of `HSB` colors in the harmony scheme.
-  func colors(from hue: Angle, saturation: CGFloat) -> [HSB] {
+  func colors(from hue: Angle, saturation: CGFloat, brightness: CGFloat) -> [HSB] {
     shiftAngles.enumerated().map { index, angle in
-      HSB(id: index + 1, hue: hue + angle, saturation: saturation, brightness: 1)
+      HSB(id: index + 1, hue: hue + angle, saturation: saturation, brightness: brightness)
     }
   }
 }
