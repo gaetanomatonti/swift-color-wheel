@@ -24,6 +24,7 @@ struct ColorWheel: View {
   /// The selected color harmony scheme.
   let scheme: Scheme
   
+  /// The shader of the color wheel.
   private var shader: Shader {
     ShaderLibrary.colorWheel(.boundingRect, .float(brightness))
   }
