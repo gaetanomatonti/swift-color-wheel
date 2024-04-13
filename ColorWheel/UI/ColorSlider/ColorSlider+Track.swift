@@ -12,11 +12,6 @@ extension ColorSlider {
   /// A view that displays the track of the slider.
   struct Track: View {
 
-    // MARK: - Constants
-
-    /// The height of the slider.
-    private let height: CGFloat = 48
-
     // MARK: - Stored Properties
 
     /// The frame of the view.
@@ -32,7 +27,7 @@ extension ColorSlider {
       RoundedRectangle(cornerRadius: 24, style: .continuous)
         .fill(style)
         .stroke(.thinMaterial, lineWidth: 2)
-        .frame(width: frame.width, height: height)
+        .frame(width: frame.width)
     }
   }
 }

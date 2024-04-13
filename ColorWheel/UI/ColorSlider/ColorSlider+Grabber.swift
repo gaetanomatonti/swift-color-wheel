@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Vectors
 
 extension ColorSlider {
   /// A view that displays the component the user grabs to pick values in the slider.
@@ -70,7 +71,7 @@ extension ColorSlider {
     /// Updates the selected value from the coordinates of the grabber.
     /// - Parameter location: The location of the drag gesture used to position the grabber.
     func updateValue(for location: CGPoint) {
-      let percentage = location.x / frame.width
+      let percentage = (location.x - frame.minX) / frame.width
       value = range.value(from: percentage)
     }
 

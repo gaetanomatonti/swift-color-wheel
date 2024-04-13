@@ -11,6 +11,11 @@ import Vectors
 /// A slider component to select values in a closed range.
 struct ColorSlider<Value>: View where Value: PercentageConvertible {
 
+  // MARK: - Constants
+
+  /// The height of the slider.
+  private let height: CGFloat = 48
+
   // MARK: - Stored Properties
 
   /// The range of values allowed in the slider.
@@ -36,7 +41,7 @@ struct ColorSlider<Value>: View where Value: PercentageConvertible {
         Grabber(in: geometry.frame(in: .local), value: $value, range: range)
       }
     }
-    .frame(height: 48)
+    .frame(height: height)
   }
 }
 
