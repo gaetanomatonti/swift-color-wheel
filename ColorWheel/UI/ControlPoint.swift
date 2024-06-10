@@ -46,7 +46,7 @@ struct ControlPoint: View {
       
       ColorPoint(color: color)
         .frame(width: 48, height: 48)
-        .position(Self.position(from: hue, saturation: saturation, in: frame))
+        .position(position(from: hue, saturation: saturation, in: frame))
         .gesture(
           DragGesture()
             .onChanged { value in
@@ -92,7 +92,7 @@ struct ControlPoint: View {
   ///   - saturation: The value of the saturation.
   ///   - frame: The frame that contains the control point.
   /// - Returns: The coordinates of the control point.
-  private static func position(from hue: Angle, saturation: CGFloat, in frame: CGRect) -> CGPoint {
+  private func position(from hue: Angle, saturation: CGFloat, in frame: CGRect) -> CGPoint {
     let radius = frame.width / 2
 
     return CGPoint(

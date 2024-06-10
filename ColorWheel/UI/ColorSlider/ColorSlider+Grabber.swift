@@ -47,7 +47,7 @@ extension ColorSlider {
         Circle()
           .fill(style)
           .stroke(.thinMaterial, lineWidth: 4)
-          .position(Self.position(in: frame, for: value.percentage(in: range)))
+          .position(position(in: frame, for: value.percentage(in: range)))
           .gesture(
             DragGesture()
               .onChanged { gesture in
@@ -72,7 +72,7 @@ extension ColorSlider {
     /// - Parameters:
     ///   - frame: The frame that contains the grabber.
     ///   - percentage: The percentage of the selected value, used to correctly position the grabber.
-    static func position(in frame: CGRect, for percentage: Double) -> CGPoint {
+    private func position(in frame: CGRect, for percentage: Double) -> CGPoint {
       CGPoint(
         x: frame.minX + frame.width * percentage,
         y: frame.midY
