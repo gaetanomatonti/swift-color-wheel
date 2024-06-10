@@ -54,8 +54,7 @@ struct ColorWheel: View {
       ControlPoint(
         hue: $hue,
         saturation: $saturation,
-        brightness: brightness,
-        frame: frame
+        brightness: brightness
       )
 
       ForEach(colors) { color in
