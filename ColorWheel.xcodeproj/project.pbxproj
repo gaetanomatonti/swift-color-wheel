@@ -15,6 +15,7 @@
 		9B2E406D2B9BE35B00FB19C1 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E406C2B9BE35B00FB19C1 /* Color+Extensions.swift */; };
 		9B2E406F2B9BE4F300FB19C1 /* ColorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E406E2B9BE4F300FB19C1 /* ColorPoint.swift */; };
 		9B479CEB2BC818820029BA60 /* ColorSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B479CEA2BC818820029BA60 /* ColorSlider.swift */; };
+		9B5E60952C18E789006225DA /* MeshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E60942C18E789006225DA /* MeshView.swift */; };
 		9B6D60572B9C7516004D511D /* Angle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D60562B9C7516004D511D /* Angle+Extensions.swift */; };
 		9B6D60592B9C761A004D511D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D60582B9C761A004D511D /* ContentView.swift */; };
 		9B6D605D2B9C76CA004D511D /* GradientPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D605C2B9C76CA004D511D /* GradientPalette.swift */; };
@@ -40,6 +41,7 @@
 		9B2E406C2B9BE35B00FB19C1 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		9B2E406E2B9BE4F300FB19C1 /* ColorPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPoint.swift; sourceTree = "<group>"; };
 		9B479CEA2BC818820029BA60 /* ColorSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSlider.swift; sourceTree = "<group>"; };
+		9B5E60942C18E789006225DA /* MeshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshView.swift; sourceTree = "<group>"; };
 		9B6D60562B9C7516004D511D /* Angle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+Extensions.swift"; sourceTree = "<group>"; };
 		9B6D60582B9C761A004D511D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9B6D605C2B9C76CA004D511D /* GradientPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientPalette.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				9B2E405F2B9BB02000FB19C1 /* ControlPoint.swift */,
 				9B2E406E2B9BE4F300FB19C1 /* ColorPoint.swift */,
 				9B6D605C2B9C76CA004D511D /* GradientPalette.swift */,
+				9B5E60942C18E789006225DA /* MeshView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				9B2E40682B9BD87300FB19C1 /* HSB.swift in Sources */,
 				9B6D605D2B9C76CA004D511D /* GradientPalette.swift in Sources */,
 				9B2E406D2B9BE35B00FB19C1 /* Color+Extensions.swift in Sources */,
+				9B5E60952C18E789006225DA /* MeshView.swift in Sources */,
 				9BC482A62B9A700200F5A777 /* ColorWheel.metal in Sources */,
 				9B71497A2BC9E466006F9BAD /* BinaryFloatingPoint+PercentageConvertible.swift in Sources */,
 				9BC4829A2B9A6FEF00F5A777 /* ColorWheel.swift in Sources */,
