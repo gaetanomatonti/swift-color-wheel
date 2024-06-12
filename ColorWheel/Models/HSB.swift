@@ -9,24 +9,24 @@ import Foundation
 import SwiftUI
 
 /// A representation of a color expressed in HSB (Hue-Saturation-Brightness) values.
-struct HSB: Hashable, Identifiable {
+class HSB: Identifiable {
 
   // MARK: - Stored Properties
 
   let id: Int
 
   /// The hue value.
-  let hue: Angle
+  var hue: Angle
 
   /// The saturation value.
-  let saturation: Double
+  var saturation: Double
 
   /// The brightness value.
-  let brightness: Double
+  var brightness: Double
 
   // MARK: - Init
 
-  init(id: Int, hue: Angle, saturation: Double, brightness: Double) {
+  init(id: Int = 0, hue: Angle, saturation: Double, brightness: Double) {
     self.id = id
     self.hue = hue
     self.saturation = saturation
@@ -38,5 +38,17 @@ struct HSB: Hashable, Identifiable {
   /// The `Color` represented in HSB values.
   var color: Color {
     Color(hue: hue, saturation: saturation, brightness: brightness)
+  }
+}
+
+extension HSB: Equatable {
+  static func ==(lhs: HSB, rhs: HSB) -> Bool {
+    lhs.id == rhs.id && lhs.hue == rhs.hue && lhs.saturation == rhs.saturation && lhs.brightness == rhs.brightness
+  }
+}
+
+extension HSB: Hashable {
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(id)
   }
 }

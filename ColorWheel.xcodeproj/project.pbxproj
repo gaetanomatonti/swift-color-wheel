@@ -16,6 +16,10 @@
 		9B2E406F2B9BE4F300FB19C1 /* ColorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E406E2B9BE4F300FB19C1 /* ColorPoint.swift */; };
 		9B479CEB2BC818820029BA60 /* ColorSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B479CEA2BC818820029BA60 /* ColorSlider.swift */; };
 		9B5E60952C18E789006225DA /* MeshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E60942C18E789006225DA /* MeshView.swift */; };
+		9B5E60972C19BB8D006225DA /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E60962C19BB8D006225DA /* ColorPicker.swift */; };
+		9B5E609E2C19C89A006225DA /* MeshVertexControlPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E609C2C19C89A006225DA /* MeshVertexControlPoint.swift */; };
+		9B5E60A02C19CA64006225DA /* MeshVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E609F2C19CA64006225DA /* MeshVertex.swift */; };
+		9B5E60A22C19CB4B006225DA /* MeshConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E60A12C19CB45006225DA /* MeshConfigurationView.swift */; };
 		9B6D60572B9C7516004D511D /* Angle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D60562B9C7516004D511D /* Angle+Extensions.swift */; };
 		9B6D60592B9C761A004D511D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D60582B9C761A004D511D /* ContentView.swift */; };
 		9B6D605D2B9C76CA004D511D /* GradientPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D605C2B9C76CA004D511D /* GradientPalette.swift */; };
@@ -42,6 +46,10 @@
 		9B2E406E2B9BE4F300FB19C1 /* ColorPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPoint.swift; sourceTree = "<group>"; };
 		9B479CEA2BC818820029BA60 /* ColorSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSlider.swift; sourceTree = "<group>"; };
 		9B5E60942C18E789006225DA /* MeshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshView.swift; sourceTree = "<group>"; };
+		9B5E60962C19BB8D006225DA /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		9B5E609C2C19C89A006225DA /* MeshVertexControlPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshVertexControlPoint.swift; sourceTree = "<group>"; };
+		9B5E609F2C19CA64006225DA /* MeshVertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshVertex.swift; sourceTree = "<group>"; };
+		9B5E60A12C19CB45006225DA /* MeshConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshConfigurationView.swift; sourceTree = "<group>"; };
 		9B6D60562B9C7516004D511D /* Angle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+Extensions.swift"; sourceTree = "<group>"; };
 		9B6D60582B9C761A004D511D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9B6D605C2B9C76CA004D511D /* GradientPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientPalette.swift; sourceTree = "<group>"; };
@@ -83,13 +91,14 @@
 		9B2E405E2B9BB00F00FB19C1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9B5E609D2C19C89A006225DA /* Mesh */,
 				9B71497F2BC9E645006F9BAD /* ColorSlider */,
 				9B6D60582B9C761A004D511D /* ContentView.swift */,
 				9BC482992B9A6FEF00F5A777 /* ColorWheel.swift */,
 				9B2E405F2B9BB02000FB19C1 /* ControlPoint.swift */,
 				9B2E406E2B9BE4F300FB19C1 /* ColorPoint.swift */,
 				9B6D605C2B9C76CA004D511D /* GradientPalette.swift */,
-				9B5E60942C18E789006225DA /* MeshView.swift */,
+				9B5E60962C19BB8D006225DA /* ColorPicker.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -115,6 +124,17 @@
 				9B7149772BC9E3C6006F9BAD /* PercentageConvertible.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		9B5E609D2C19C89A006225DA /* Mesh */ = {
+			isa = PBXGroup;
+			children = (
+				9B5E60A12C19CB45006225DA /* MeshConfigurationView.swift */,
+				9B5E60942C18E789006225DA /* MeshView.swift */,
+				9B5E609C2C19C89A006225DA /* MeshVertexControlPoint.swift */,
+				9B5E609F2C19CA64006225DA /* MeshVertex.swift */,
+			);
+			path = Mesh;
 			sourceTree = "<group>";
 		};
 		9B71497F2BC9E645006F9BAD /* ColorSlider */ = {
@@ -247,6 +267,7 @@
 				9B78F2822BC9E80900B0275D /* ColorSlider+Grabber.swift in Sources */,
 				9B6D60572B9C7516004D511D /* Angle+Extensions.swift in Sources */,
 				9B7149812BC9E656006F9BAD /* ColorSlider+Style.swift in Sources */,
+				9B5E60A22C19CB4B006225DA /* MeshConfigurationView.swift in Sources */,
 				9B71497E2BC9E5D3006F9BAD /* ClosedRange+PercentageConvertible.swift in Sources */,
 				9B2E40682B9BD87300FB19C1 /* HSB.swift in Sources */,
 				9B6D605D2B9C76CA004D511D /* GradientPalette.swift in Sources */,
@@ -256,10 +277,13 @@
 				9B71497A2BC9E466006F9BAD /* BinaryFloatingPoint+PercentageConvertible.swift in Sources */,
 				9BC4829A2B9A6FEF00F5A777 /* ColorWheel.swift in Sources */,
 				9B2E40632B9BB22F00FB19C1 /* CGRect+Extension.swift in Sources */,
+				9B5E60A02C19CA64006225DA /* MeshVertex.swift in Sources */,
 				9B2E406F2B9BE4F300FB19C1 /* ColorPoint.swift in Sources */,
+				9B5E60972C19BB8D006225DA /* ColorPicker.swift in Sources */,
 				9B71497C2BC9E54F006F9BAD /* Angle+PercentageConvertible.swift in Sources */,
 				9B6D60592B9C761A004D511D /* ContentView.swift in Sources */,
 				9B78F2842BC9F07F00B0275D /* ColorSlider+Track.swift in Sources */,
+				9B5E609E2C19C89A006225DA /* MeshVertexControlPoint.swift in Sources */,
 				9B2E40652B9BCA2400FB19C1 /* Scheme.swift in Sources */,
 				9B7149782BC9E3C6006F9BAD /* PercentageConvertible.swift in Sources */,
 				9BC482982B9A6FEF00F5A777 /* ColorWheelApp.swift in Sources */,
@@ -399,11 +423,13 @@
 				DEVELOPMENT_TEAM = 7G4N3SZHJZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Let me save this amazing wallpaper in your pohto library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -428,11 +454,13 @@
 				DEVELOPMENT_TEAM = 7G4N3SZHJZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Let me save this amazing wallpaper in your pohto library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
