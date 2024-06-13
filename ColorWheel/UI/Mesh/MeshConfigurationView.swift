@@ -12,6 +12,8 @@ struct MeshConfigurationView: View {
 
   // MARK: - Stored Properties
 
+  @Environment(\.dismiss) var dismiss
+
   /// The number of columns in the mesh.
   @Binding var columns: Int
 
@@ -25,22 +27,33 @@ struct MeshConfigurationView: View {
 
   var body: some View {
     Form {
-      Stepper(value: $columns, in: pointsRange) {
-        HStack {
-          Text("Columns")
-          Spacer()
-          Text("\(columns)")
+      VStack(alignment: .center) {
+        Stepper(value: $columns, in: pointsRange) {
+          HStack {
+            Text("Columns")
+            Spacer()
+            Text("\(columns)")
+          }
         }
-      }
 
-      Stepper(value: $rows, in: pointsRange) {
-        HStack {
-          Text("Rows")
-          Spacer()
-          Text("\(rows)")
+        Stepper(value: $rows, in: pointsRange) {
+          HStack {
+            Text("Rows")
+            Spacer()
+            Text("\(rows)")
+          }
         }
+
+        #if os(macOS)
+        Button {
+          dismiss()
+        } label: {
+          Text("Done")
+        }
+        #endif
       }
     }
+    .scenePadding()
   }
 }
 

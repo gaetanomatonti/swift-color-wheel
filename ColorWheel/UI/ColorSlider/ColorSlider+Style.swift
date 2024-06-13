@@ -8,36 +8,12 @@
 import Foundation
 import SwiftUI
 
-/// The `EnvironmentKey` to set the shape style of the ``ColorSider`` track.
-fileprivate enum ColorSliderTrackStyle: EnvironmentKey {
-  static var defaultValue: AnyShapeStyle = AnyShapeStyle(.background)
-}
-
-/// The `EnvironmentKey` to set the shape style of the ``ColorSider`` grabber.
-fileprivate enum ColorSliderGrabberStyle: EnvironmentKey {
-  static var defaultValue: AnyShapeStyle = AnyShapeStyle(Color.blue)
-}
-
 extension EnvironmentValues {
   /// The shape style of the ``ColorSlider`` track.
-  var colorSliderTrackStyle: AnyShapeStyle {
-    get {
-      self[ColorSliderTrackStyle.self]
-    }
-    set {
-      self[ColorSliderTrackStyle.self] = newValue
-    }
-  }
+  @Entry var colorSliderTrackStyle = AnyShapeStyle(.background)
 
   /// The shape style of the ``ColorSlider`` grabber.
-  var colorSliderGrabberStyle: AnyShapeStyle {
-    get {
-      self[ColorSliderGrabberStyle.self]
-    }
-    set {
-      self[ColorSliderGrabberStyle.self] = newValue
-    }
-  }
+  @Entry var colorSliderGrabberStyle = AnyShapeStyle(.blue)
 }
 
 extension View {

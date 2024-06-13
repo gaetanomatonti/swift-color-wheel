@@ -38,6 +38,11 @@ class MeshVertex: Identifiable {
 
   // MARK: - Init
 
+  init(position: CGPoint, color: HSB) {
+    self.position = position
+    self.hsbColor = color
+  }
+
   init(x: CGFloat, y: CGFloat, color: HSB) {
     self.position = CGPoint(x: x, y: y)
     self.hsbColor = color

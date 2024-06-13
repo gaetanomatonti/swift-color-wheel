@@ -52,3 +52,9 @@ extension HSB: Hashable {
     hasher.combine(id)
   }
 }
+
+extension HSB {
+  static var white: HSB {
+    HSB(hue: .degrees(0), saturation: 0, brightness: 1)
+  }
+}

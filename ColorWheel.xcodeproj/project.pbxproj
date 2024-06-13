@@ -35,7 +35,19 @@
 		9BC4829C2B9A6FF000F5A777 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC4829B2B9A6FF000F5A777 /* Assets.xcassets */; };
 		9BC4829F2B9A6FF000F5A777 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC4829E2B9A6FF000F5A777 /* Preview Assets.xcassets */; };
 		9BC482A62B9A700200F5A777 /* ColorWheel.metal in Sources */ = {isa = PBXBuildFile; fileRef = 9BC482A52B9A700200F5A777 /* ColorWheel.metal */; };
+		9BD5B4052C1ACF9100CE2F0C /* MeshGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD5B4042C1ACF9100CE2F0C /* MeshGenerator.swift */; };
+		9BD5B40D2C1AD08F00CE2F0C /* ColorWheelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD5B40C2C1AD08F00CE2F0C /* ColorWheelTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9BD5B40E2C1AD08F00CE2F0C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9BC4828C2B9A6FEF00F5A777 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9BC482932B9A6FEF00F5A777;
+			remoteInfo = ColorWheel;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		9B2E405F2B9BB02000FB19C1 /* ControlPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPoint.swift; sourceTree = "<group>"; };
@@ -66,6 +78,9 @@
 		9BC4829B2B9A6FF000F5A777 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BC4829E2B9A6FF000F5A777 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9BC482A52B9A700200F5A777 /* ColorWheel.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ColorWheel.metal; sourceTree = "<group>"; };
+		9BD5B4042C1ACF9100CE2F0C /* MeshGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGenerator.swift; sourceTree = "<group>"; };
+		9BD5B40A2C1AD08F00CE2F0C /* ColorWheelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorWheelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BD5B40C2C1AD08F00CE2F0C /* ColorWheelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +89,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B2709A82BC4A0EB0002C574 /* Vectors in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9BD5B4072C1AD08F00CE2F0C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +155,7 @@
 				9B5E60942C18E789006225DA /* MeshView.swift */,
 				9B5E609C2C19C89A006225DA /* MeshVertexControlPoint.swift */,
 				9B5E609F2C19CA64006225DA /* MeshVertex.swift */,
+				9BD5B4042C1ACF9100CE2F0C /* MeshGenerator.swift */,
 			);
 			path = Mesh;
 			sourceTree = "<group>";
@@ -152,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				9BC482962B9A6FEF00F5A777 /* ColorWheel */,
+				9BD5B40B2C1AD08F00CE2F0C /* ColorWheelTests */,
 				9BC482952B9A6FEF00F5A777 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -160,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				9BC482942B9A6FEF00F5A777 /* ColorWheel.app */,
+				9BD5B40A2C1AD08F00CE2F0C /* ColorWheelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -186,6 +211,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		9BD5B40B2C1AD08F00CE2F0C /* ColorWheelTests */ = {
+			isa = PBXGroup;
+			children = (
+				9BD5B40C2C1AD08F00CE2F0C /* ColorWheelTests.swift */,
+			);
+			path = ColorWheelTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -209,6 +242,24 @@
 			productReference = 9BC482942B9A6FEF00F5A777 /* ColorWheel.app */;
 			productType = "com.apple.product-type.application";
 		};
+		9BD5B4092C1AD08F00CE2F0C /* ColorWheelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9BD5B4102C1AD08F00CE2F0C /* Build configuration list for PBXNativeTarget "ColorWheelTests" */;
+			buildPhases = (
+				9BD5B4062C1AD08F00CE2F0C /* Sources */,
+				9BD5B4072C1AD08F00CE2F0C /* Frameworks */,
+				9BD5B4082C1AD08F00CE2F0C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9BD5B40F2C1AD08F00CE2F0C /* PBXTargetDependency */,
+			);
+			name = ColorWheelTests;
+			productName = ColorWheelTests;
+			productReference = 9BD5B40A2C1AD08F00CE2F0C /* ColorWheelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -216,11 +267,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					9BC482932B9A6FEF00F5A777 = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					9BD5B4092C1AD08F00CE2F0C = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 9BC482932B9A6FEF00F5A777;
 					};
 				};
 			};
@@ -241,6 +296,7 @@
 			projectRoot = "";
 			targets = (
 				9BC482932B9A6FEF00F5A777 /* ColorWheel */,
+				9BD5B4092C1AD08F00CE2F0C /* ColorWheelTests */,
 			);
 		};
 /* End PBXProject section */
@@ -252,6 +308,13 @@
 			files = (
 				9BC4829F2B9A6FF000F5A777 /* Preview Assets.xcassets in Resources */,
 				9BC4829C2B9A6FF000F5A777 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9BD5B4082C1AD08F00CE2F0C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +335,7 @@
 				9B2E40682B9BD87300FB19C1 /* HSB.swift in Sources */,
 				9B6D605D2B9C76CA004D511D /* GradientPalette.swift in Sources */,
 				9B2E406D2B9BE35B00FB19C1 /* Color+Extensions.swift in Sources */,
+				9BD5B4052C1ACF9100CE2F0C /* MeshGenerator.swift in Sources */,
 				9B5E60952C18E789006225DA /* MeshView.swift in Sources */,
 				9BC482A62B9A700200F5A777 /* ColorWheel.metal in Sources */,
 				9B71497A2BC9E466006F9BAD /* BinaryFloatingPoint+PercentageConvertible.swift in Sources */,
@@ -290,7 +354,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9BD5B4062C1AD08F00CE2F0C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BD5B40D2C1AD08F00CE2F0C /* ColorWheelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9BD5B40F2C1AD08F00CE2F0C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9BC482932B9A6FEF00F5A777 /* ColorWheel */;
+			targetProxy = 9BD5B40E2C1AD08F00CE2F0C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		9BC482A02B9A6FF000F5A777 /* Debug */ = {
@@ -437,6 +517,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gaetanomatonti.ColorWheel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -468,9 +552,51 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gaetanomatonti.ColorWheel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9BD5B4112C1AD08F00CE2F0C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7G4N3SZHJZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gaetanomatonti.ColorWheelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ColorWheel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ColorWheel";
+			};
+			name = Debug;
+		};
+		9BD5B4122C1AD08F00CE2F0C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7G4N3SZHJZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gaetanomatonti.ColorWheelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ColorWheel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ColorWheel";
 			};
 			name = Release;
 		};
@@ -491,6 +617,15 @@
 			buildConfigurations = (
 				9BC482A32B9A6FF000F5A777 /* Debug */,
 				9BC482A42B9A6FF000F5A777 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9BD5B4102C1AD08F00CE2F0C /* Build configuration list for PBXNativeTarget "ColorWheelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9BD5B4112C1AD08F00CE2F0C /* Debug */,
+				9BD5B4122C1AD08F00CE2F0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

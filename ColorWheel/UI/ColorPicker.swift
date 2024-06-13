@@ -24,7 +24,7 @@ struct ColorPicker: View {
 
       SliderColorPicker(hue: $hue, saturation: $saturation, brightness: $brightness)
     }
-    .tabViewStyle(.page(indexDisplayMode: .always))
+    .tabViewStyle(.sidebarAdaptable)
   }
 }
 
