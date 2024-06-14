@@ -6,16 +6,35 @@
 //
 
 import Foundation
+import class UIKit.UIColor
 
 func lerp<Value: BinaryFloatingPoint>(v1: Value, v2: Value, t: Value) -> Value {
     return v1 * (1 - t) + v2 * t
 }
 
 func lerp(v1: HSB, v2: HSB, t: CGFloat) -> HSB {
-  let hue = lerp(v1: v1.hue.degrees, v2: v2.hue.degrees, t: t)
-  let saturation = lerp(v1: v1.saturation, v2: v2.saturation, t: t)
-  let brightness = lerp(v1: v1.brightness, v2: v2.brightness, t: t)
-  return HSB(hue: .degrees(hue), saturation: saturation, brightness: brightness)
+  return HSB(uiColor: lerp(v1: v1.uiColor, v2: v2.uiColor, t: t))
+}
+
+func lerp(v1: UIColor, v2: UIColor, t: CGFloat) -> UIColor {
+  var r1: CGFloat = 0.0
+  var g1: CGFloat = 0.0
+  var b1: CGFloat = 0.0
+  var a1: CGFloat = 0.0
+  var r2: CGFloat = 0.0
+  var g2: CGFloat = 0.0
+  var b2: CGFloat = 0.0
+  var a2: CGFloat = 0.0
+
+  v1.getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
+  v2.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
+
+  return UIColor(
+    red: lerp(v1: r1, v2: r2, t: t),
+    green: lerp(v1: g1, v2: g2, t: t),
+    blue: lerp(v1: b1, v2: b2, t: t),
+    alpha: lerp(v1: a1, v2: a2, t: t)
+  )
 }
 
 func blerp<Value: BinaryFloatingPoint>(c1: Value, c2: Value, c3: Value, c4: Value, tx: Value, ty: Value) -> Value {

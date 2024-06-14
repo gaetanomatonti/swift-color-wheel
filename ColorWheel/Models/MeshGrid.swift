@@ -71,32 +71,33 @@ class MeshGrid {
   // MARK: - Functions
 
   func addColumn() {
-    addColumn(at: columns / 2)
-  }
-
-  func addColumn(at columnIndex: Int) {
-    guard columnIndex > 0 && columnIndex < columns - 1 else {
-      fatalError("The application only supports inserting between existing columns.")
-    }
-
-    // Adding in between
     for row in 0..<rows {
-      let c1 = matrix[row][columnIndex - 1]
-      let c2 = matrix[row][columnIndex]
-      let c3 = matrix[row][columnIndex - 1]
-      let c4 = matrix[row][columnIndex]
+      var i = 0
+      var j = matrix[row].count - 1
 
-      let vertex = blerp(c1: c1, c2: c2, c3: c3, c4: c4, tx: 0.5, ty: 0.5)
-      matrix[row].insert(vertex, at: columnIndex)
+      var newRow: [MeshVertex] = Array(repeating: MeshVertex(position: .zero, color: .white), count: columns)
+      newRow[0] = matrix[row][i]
+      newRow[columns - 1] = matrix[row][j]
 
-      for column in 0..<columns {
-        matrix[row][column].position.x = helper.position(for: row, and: column).x
+      while j - i > 0 {
+        let iPosition = helper.position(for: row, and: i + 1)
+        let iColor = lerp(v1: matrix[row][i].hsbColor, v2: matrix[row][i + 1].hsbColor, t: 1 - iPosition.x)
+        newRow[i + 1] = MeshVertex(position: iPosition,color: iColor)
+
+        let jPosition = helper.position(for: row, and: j)
+        let jColor = lerp(v1: matrix[row][j - 1].hsbColor, v2: matrix[row][j].hsbColor, t: 1 - jPosition.x)
+        newRow[j] = MeshVertex(position: jPosition,color: jColor)
+
+        i += 1
+        j -= 1
       }
+
+      matrix[row] = newRow
     }
   }
 
   func removeColumn() {
-    removeColumn(at: (columns + 1) / 2)
+    // TODO: Implement (might reuse add)
   }
 
   func removeColumn(at columnIndex: Int) {

@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import class UIKit.UIColor
 
 /// A representation of a color expressed in HSB (Hue-Saturation-Brightness) values.
 class HSB: Identifiable {
@@ -33,7 +34,31 @@ class HSB: Identifiable {
     self.brightness = brightness
   }
 
+  init(id: Int = 0, uiColor: UIColor) {
+    self.id = id
+    
+    var hue: CGFloat = 0.0
+    var saturation: CGFloat = 0.0
+    var brightness: CGFloat = 0.0
+    var alpha: CGFloat = 0.0
+
+    uiColor.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+    self.hue = .degrees(hue * 360)
+    self.saturation = saturation
+    self.brightness = brightness
+  }
+
   // MARK: - Computed Properties
+
+  /// The `UIColor` representation of the HSB values.
+  var uiColor: UIColor {
+    UIColor(
+      hue: hue.absolute.degrees.truncatingRemainder(dividingBy: 360) / 360,
+      saturation: saturation,
+      brightness: brightness,
+      alpha: 1.0
+    )
+  }
 
   /// The `Color` represented in HSB values.
   var color: Color {
