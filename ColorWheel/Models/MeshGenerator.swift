@@ -8,7 +8,7 @@
 import Foundation
 import Vectors
 
-/// An object that generates a grid for a mesh gradient.
+/// An object that generates the grid for a mesh gradient.
 struct MeshGenerator {
 
   /// A type that represents a row index.
@@ -55,6 +55,7 @@ struct MeshGenerator {
 
   // MARK: - Functions
 
+  /// Generates the vertices of the mesh.
   private func generateVertices() -> [[MeshVertex]] {
     var vertices: [[MeshVertex]] = Array(repeating: [], count: rows)
 
@@ -70,6 +71,7 @@ struct MeshGenerator {
 }
 
 extension MeshGenerator {
+  /// A preset grid where the position of the vertices is associated to a hue.
   static func rainbow(columns: Int, rows: Int) -> MeshGenerator {
     MeshGenerator(columns: columns, rows: rows) { row, column, helper in
       let center = CGPoint(x: 0.5, y: 0.5)
