@@ -27,33 +27,45 @@ struct MeshConfigurationView: View {
 
   var body: some View {
     Form {
+      #if os(macOS)
       VStack(alignment: .center) {
-        Stepper(value: $columns, in: pointsRange) {
-          HStack {
-            Text("Columns")
-            Spacer()
-            Text("\(columns)")
-          }
-        }
+        columnsStepper
+        
+        rowsStepper
 
-        Stepper(value: $rows, in: pointsRange) {
-          HStack {
-            Text("Rows")
-            Spacer()
-            Text("\(rows)")
-          }
-        }
-
-        #if os(macOS)
         Button {
           dismiss()
         } label: {
           Text("Done")
         }
-        #endif
+      }
+      .scenePadding()
+      #else
+      columnsStepper
+
+      rowsStepper
+      #endif
+    }
+  }
+
+  private var columnsStepper: some View {
+    Stepper(value: $columns, in: pointsRange) {
+      HStack {
+        Text("Columns")
+        Spacer()
+        Text("\(columns)")
       }
     }
-    .scenePadding()
+  }
+
+  private var rowsStepper: some View {
+    Stepper(value: $rows, in: pointsRange) {
+      HStack {
+        Text("Rows")
+        Spacer()
+        Text("\(rows)")
+      }
+    }
   }
 }
 

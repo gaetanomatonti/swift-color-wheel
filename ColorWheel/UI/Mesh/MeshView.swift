@@ -81,10 +81,12 @@ struct MeshView: View {
         .toggleStyle(.button)
         .buttonStyle(.bordered)
         .buttonBorderShape(.circle)
-        .sheet(isPresented: $isGridConfigurationEnabled) {
+        .popover(isPresented: $isGridConfigurationEnabled) {
           MeshConfigurationView(columns: $grid.columns, rows: $grid.rows)
+            #if os(iOS)
+            .frame(minWidth: 300, minHeight: 200)
             .presentationCompactAdaptation(.popover)
-            .presentationDragIndicator(.visible)
+            #endif
         }
       }
 

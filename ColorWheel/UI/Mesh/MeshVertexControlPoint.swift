@@ -17,6 +17,8 @@ struct MeshVertexControlPoint: View {
   /// This property controls the presentation of a color picker, allowing picking a color for the vertex.
   @State private var isColorCustomizationEnabled = false
 
+  @State private var isDragging = false
+
   // MARK: - Body
 
   var body: some View {
@@ -26,13 +28,20 @@ struct MeshVertexControlPoint: View {
       ColorPoint(color: vertex.color)
         .frame(width: 48, height: 48)
         .position(vertexPosition(in: frame))
+        #if os(macOS)
+        .pointerStyle(isDragging ? .grabActive : .grabIdle) // bug: not updating?
+        #endif
         .onTapGesture(count: 2) {
           isColorCustomizationEnabled.toggle()
         }
         .gesture(
           DragGesture()
-            .onChanged { value in
-              updatePosition(from: value.location, in: frame)
+            .onChanged { gesture in
+              vertex.position = vertexPosition(from: gesture.location, in: frame)
+              isDragging = true
+            }
+            .onEnded { _ in
+              isDragging = false
             }
         )
     }
@@ -51,8 +60,8 @@ struct MeshVertexControlPoint: View {
   /// - Parameters:
   ///   - location: The location of the drag gesture.
   ///   - frame: The frame of the container view.
-  private func updatePosition(from location: CGPoint, in frame: CGRect) {
-    vertex.position = CGPoint(
+  private func vertexPosition(from location: CGPoint, in frame: CGRect) -> CGPoint {
+    CGPoint(
       x: max(0, min(location.x / frame.width, 1)),
       y: max(0, min(location.y / frame.height, 1))
     )
@@ -65,8 +74,9 @@ struct MeshVertexControlPoint: View {
   /// - Parameter frame: The frame of the container view.
   /// - Returns: The position of the vertex in the view.
   private func vertexPosition(in frame: CGRect) -> CGPoint {
-    let x = vertex.position.x * frame.width
-    let y = vertex.position.y * frame.height
-    return CGPoint(x: x, y: y)
+    CGPoint(
+      x: vertex.position.x * frame.width,
+      y: vertex.position.y * frame.height
+    )
   }
 }
