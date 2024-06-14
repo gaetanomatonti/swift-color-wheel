@@ -17,6 +17,7 @@ struct MeshVertexControlPoint: View {
   /// This property controls the presentation of a color picker, allowing picking a color for the vertex.
   @State private var isColorCustomizationEnabled = false
 
+  /// Whether the user is dragging the control point.
   @State private var isDragging = false
 
   // MARK: - Body

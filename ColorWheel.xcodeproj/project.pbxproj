@@ -15,6 +15,9 @@
 		9B2E406D2B9BE35B00FB19C1 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E406C2B9BE35B00FB19C1 /* Color+Extensions.swift */; };
 		9B2E406F2B9BE4F300FB19C1 /* ColorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E406E2B9BE4F300FB19C1 /* ColorPoint.swift */; };
 		9B479CEB2BC818820029BA60 /* ColorSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B479CEA2BC818820029BA60 /* ColorSlider.swift */; };
+		9B5B33F32C1C6AF10020E8E3 /* GridHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B33F22C1C6AF10020E8E3 /* GridHelper.swift */; };
+		9B5B33F72C1C8C980020E8E3 /* MeshGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B33F62C1C8C980020E8E3 /* MeshGenerator.swift */; };
+		9B5B33F92C1C8F370020E8E3 /* LinearInterpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B33F82C1C8F300020E8E3 /* LinearInterpolation.swift */; };
 		9B5E60952C18E789006225DA /* MeshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E60942C18E789006225DA /* MeshView.swift */; };
 		9B5E60972C19BB8D006225DA /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E60962C19BB8D006225DA /* ColorPicker.swift */; };
 		9B5E609E2C19C89A006225DA /* MeshVertexControlPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E609C2C19C89A006225DA /* MeshVertexControlPoint.swift */; };
@@ -35,7 +38,7 @@
 		9BC4829C2B9A6FF000F5A777 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC4829B2B9A6FF000F5A777 /* Assets.xcassets */; };
 		9BC4829F2B9A6FF000F5A777 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC4829E2B9A6FF000F5A777 /* Preview Assets.xcassets */; };
 		9BC482A62B9A700200F5A777 /* ColorWheel.metal in Sources */ = {isa = PBXBuildFile; fileRef = 9BC482A52B9A700200F5A777 /* ColorWheel.metal */; };
-		9BD5B4052C1ACF9100CE2F0C /* MeshGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD5B4042C1ACF9100CE2F0C /* MeshGenerator.swift */; };
+		9BD5B4052C1ACF9100CE2F0C /* MeshGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD5B4042C1ACF9100CE2F0C /* MeshGrid.swift */; };
 		9BD5B40D2C1AD08F00CE2F0C /* ColorWheelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD5B40C2C1AD08F00CE2F0C /* ColorWheelTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +60,9 @@
 		9B2E406C2B9BE35B00FB19C1 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		9B2E406E2B9BE4F300FB19C1 /* ColorPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPoint.swift; sourceTree = "<group>"; };
 		9B479CEA2BC818820029BA60 /* ColorSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSlider.swift; sourceTree = "<group>"; };
+		9B5B33F22C1C6AF10020E8E3 /* GridHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridHelper.swift; sourceTree = "<group>"; };
+		9B5B33F62C1C8C980020E8E3 /* MeshGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGenerator.swift; sourceTree = "<group>"; };
+		9B5B33F82C1C8F300020E8E3 /* LinearInterpolation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearInterpolation.swift; sourceTree = "<group>"; };
 		9B5E60942C18E789006225DA /* MeshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshView.swift; sourceTree = "<group>"; };
 		9B5E60962C19BB8D006225DA /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		9B5E609C2C19C89A006225DA /* MeshVertexControlPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshVertexControlPoint.swift; sourceTree = "<group>"; };
@@ -78,7 +84,7 @@
 		9BC4829B2B9A6FF000F5A777 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BC4829E2B9A6FF000F5A777 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9BC482A52B9A700200F5A777 /* ColorWheel.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ColorWheel.metal; sourceTree = "<group>"; };
-		9BD5B4042C1ACF9100CE2F0C /* MeshGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGenerator.swift; sourceTree = "<group>"; };
+		9BD5B4042C1ACF9100CE2F0C /* MeshGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGrid.swift; sourceTree = "<group>"; };
 		9BD5B40A2C1AD08F00CE2F0C /* ColorWheelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorWheelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BD5B40C2C1AD08F00CE2F0C /* ColorWheelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,6 +134,7 @@
 		9B2E40612B9BB22200FB19C1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9B5B33F82C1C8F300020E8E3 /* LinearInterpolation.swift */,
 				9B2E40622B9BB22F00FB19C1 /* CGRect+Extension.swift */,
 				9B2E406C2B9BE35B00FB19C1 /* Color+Extensions.swift */,
 				9B6D60562B9C7516004D511D /* Angle+Extensions.swift */,
@@ -141,9 +148,12 @@
 		9B2E40662B9BD86800FB19C1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9B5B33F22C1C6AF10020E8E3 /* GridHelper.swift */,
+				9BD5B4042C1ACF9100CE2F0C /* MeshGrid.swift */,
 				9B2E40642B9BCA2400FB19C1 /* Scheme.swift */,
 				9B2E40672B9BD87300FB19C1 /* HSB.swift */,
 				9B7149772BC9E3C6006F9BAD /* PercentageConvertible.swift */,
+				9B5B33F62C1C8C980020E8E3 /* MeshGenerator.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -155,7 +165,6 @@
 				9B5E60942C18E789006225DA /* MeshView.swift */,
 				9B5E609C2C19C89A006225DA /* MeshVertexControlPoint.swift */,
 				9B5E609F2C19CA64006225DA /* MeshVertex.swift */,
-				9BD5B4042C1ACF9100CE2F0C /* MeshGenerator.swift */,
 			);
 			path = Mesh;
 			sourceTree = "<group>";
@@ -328,6 +337,7 @@
 				9B479CEB2BC818820029BA60 /* ColorSlider.swift in Sources */,
 				9B2E40602B9BB02000FB19C1 /* ControlPoint.swift in Sources */,
 				9B78F2822BC9E80900B0275D /* ColorSlider+Grabber.swift in Sources */,
+				9B5B33F92C1C8F370020E8E3 /* LinearInterpolation.swift in Sources */,
 				9B6D60572B9C7516004D511D /* Angle+Extensions.swift in Sources */,
 				9B7149812BC9E656006F9BAD /* ColorSlider+Style.swift in Sources */,
 				9B5E60A22C19CB4B006225DA /* MeshConfigurationView.swift in Sources */,
@@ -335,7 +345,7 @@
 				9B2E40682B9BD87300FB19C1 /* HSB.swift in Sources */,
 				9B6D605D2B9C76CA004D511D /* GradientPalette.swift in Sources */,
 				9B2E406D2B9BE35B00FB19C1 /* Color+Extensions.swift in Sources */,
-				9BD5B4052C1ACF9100CE2F0C /* MeshGenerator.swift in Sources */,
+				9BD5B4052C1ACF9100CE2F0C /* MeshGrid.swift in Sources */,
 				9B5E60952C18E789006225DA /* MeshView.swift in Sources */,
 				9BC482A62B9A700200F5A777 /* ColorWheel.metal in Sources */,
 				9B71497A2BC9E466006F9BAD /* BinaryFloatingPoint+PercentageConvertible.swift in Sources */,
@@ -347,9 +357,11 @@
 				9B71497C2BC9E54F006F9BAD /* Angle+PercentageConvertible.swift in Sources */,
 				9B6D60592B9C761A004D511D /* ContentView.swift in Sources */,
 				9B78F2842BC9F07F00B0275D /* ColorSlider+Track.swift in Sources */,
+				9B5B33F72C1C8C980020E8E3 /* MeshGenerator.swift in Sources */,
 				9B5E609E2C19C89A006225DA /* MeshVertexControlPoint.swift in Sources */,
 				9B2E40652B9BCA2400FB19C1 /* Scheme.swift in Sources */,
 				9B7149782BC9E3C6006F9BAD /* PercentageConvertible.swift in Sources */,
+				9B5B33F32C1C6AF10020E8E3 /* GridHelper.swift in Sources */,
 				9BC482982B9A6FEF00F5A777 /* ColorWheelApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,7 +534,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -557,7 +569,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

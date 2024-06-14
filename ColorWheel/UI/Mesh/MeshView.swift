@@ -28,23 +28,6 @@ struct MeshView: View {
   /// Setting this property to true, allows manipulating the vertices of the mesh.
   @State private var isMeshConfigurationEnabled = false
 
-  // MARK: - Computed Properties
-
-  var _flattenedVertices: [MeshVertex] {
-    grid.matrix
-      .flatMap { $0 }
-  }
-
-  var simdVertices: [SIMD2<Float>] {
-    _flattenedVertices
-      .map(\.simd)
-  }
-
-  var _colors: [Color] {
-    _flattenedVertices
-      .map(\.color)
-  }
-
   // MARK: - Body
 
   var body: some View {
@@ -53,7 +36,7 @@ struct MeshView: View {
         .clipShape(.rect(cornerRadius: isMeshConfigurationEnabled ? 24 : .zero))
 
       if isMeshConfigurationEnabled {
-        ForEach(_flattenedVertices) { vertex in
+        ForEach(grid.flattenedVertices) { vertex in
           MeshVertexControlPoint(vertex: vertex)
             .transition(.opacity.combined(with: .blurReplace))
         }
@@ -119,8 +102,8 @@ struct MeshView: View {
     MeshGradient(
       width: grid.columns,
       height: grid.rows,
-      points: simdVertices,
-      colors: _colors
+      points: grid.vertices,
+      colors: grid.colors
     )
   }
 
