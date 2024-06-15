@@ -25,6 +25,5 @@ struct MeshGradientView: View {
       points: grid.vertices,
       colors: grid.colors
     )
-    .aspectRatio(grid.aspectRatio.value, contentMode: .fit)
   }
 }

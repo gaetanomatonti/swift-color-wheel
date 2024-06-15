@@ -7,10 +7,16 @@
 //
 
 import Foundation
+import SwiftUI
 import Vectors
 
 /// An object that generates the grid for a mesh gradient.
 struct MeshGenerator {
+  /// A type containing parameters for the configuration of a mesh generator.
+  struct Configuration {
+    /// Whether the generator should randomize the position of the vertices.
+    let randomizesPositions: Bool
+  }
 
   /// A type that represents a row index.
   typealias Row = Int
@@ -19,7 +25,7 @@ struct MeshGenerator {
   typealias Column = Int
 
   /// The closure that creates a vertex from row, and column indices, and a `GridHelper` object.
-  typealias VertexProvider = (Row, Column, GridHelper) -> MeshVertex
+  typealias VertexProvider = (Row, Column, Configuration, GridHelper) -> MeshVertex
 
   // MARK: - Stored Properties
 
@@ -28,6 +34,9 @@ struct MeshGenerator {
 
   /// The rows of the grid.
   let rows: Column
+
+  /// The configuration of the generator.
+  let configuration: Configuration
 
   /// The closure that creates a vertex from row, and column indices, and a `GridHelper` object.
   private var vertexProvider: VertexProvider
@@ -46,15 +55,23 @@ struct MeshGenerator {
 
   // MARK: - Init
 
-  init(columns: Int, rows: Int, vertexProvider: @escaping VertexProvider) {
+  init(columns: Int, rows: Int, configuration: Configuration = Configuration(), vertexProvider: @escaping VertexProvider) {
     precondition(columns > 1 && rows > 1, "The number of columns and rows must be greater than 1.")
 
     self.columns = columns
     self.rows = rows
+    self.configuration = configuration
     self.vertexProvider = vertexProvider
   }
 
   // MARK: - Functions
+
+  /// Creates a new instance of the generator with the specified configuration.
+  /// - Parameter configuration: The new configuration of the generator.
+  /// - Returns: An updated `MeshGenerator`.
+  func configuration(_ configuration: Configuration) -> MeshGenerator {
+    MeshGenerator(columns: columns, rows: rows, configuration: configuration, vertexProvider: vertexProvider)
+  }
 
   /// Generates the vertices of the mesh.
   private func generateVertices() -> [[MeshVertex]] {
@@ -62,7 +79,7 @@ struct MeshGenerator {
 
     for row in 0..<rows {
       for column in 0..<columns {
-        let vertex = vertexProvider(row, column, helper)
+        let vertex = vertexProvider(row, column, configuration, helper)
         vertex.location = helper.location(row, column)
         vertices[row].insert(vertex, at: column)
       }
@@ -72,21 +89,72 @@ struct MeshGenerator {
   }
 }
 
+extension MeshGenerator.Configuration {
+  init() {
+    randomizesPositions = false
+  }
+}
+
 extension MeshGenerator {
   /// A preset grid where the position of the vertices is associated to a hue.
   static func rainbow(columns: Int, rows: Int) -> MeshGenerator {
-    MeshGenerator(columns: columns, rows: rows) { row, column, helper in
+    MeshGenerator(columns: columns, rows: rows) { row, column, configuration, helper in
       let center = CGPoint(x: 0.5, y: 0.5)
-      let position = helper.position(for: row, and: column)
+      let position = if case .center = helper.location(row, column), configuration.randomizesPositions {
+        helper.randomPosition(for: row, and: column)
+      } else {
+        helper.position(for: row, and: column)
+      }
 
       /// The offset position, so that the it falls in the range [-1, 1]
-      let offsetPosition = (position - center).normalized
+      var offsetPosition = position - center
+      offsetPosition = offsetPosition * 2.0
+      offsetPosition = offsetPosition.limit(1)
 
       let hue = atan2(offsetPosition.y, offsetPosition.x)
       let saturation = offsetPosition.magnitude
 
       let color = HSB(hue: .radians(hue), saturation: saturation, brightness: 1)
       return MeshVertex(position: position, color: color)
+    }
+  }
+
+  /// A generator that generates a grid with colors from the Aurora Borealis.
+  static var aurora: MeshGenerator {
+    MeshGenerator(columns: 5, rows: 5) { row, column, configuration, helper in
+      let baseColor = HSB(hue: .degrees(180), saturation: 1.0, brightness: 1.0)
+      let distance = Angle(degrees: 5.0 * (CGFloat(row) + 1.0))
+      let colors = ColorScheme.analogous(from: baseColor, distance: distance).hsbColors
+
+      let position = if case .center = helper.location(row, column), configuration.randomizesPositions {
+        helper.randomPosition(for: row, and: column)
+      } else {
+        helper.position(for: row, and: column)
+      }
+
+      let color = if case .center = helper.location(row, column) {
+        colors[column - 1]
+      } else {
+        HSB(hue: .degrees(180), saturation: 0.0, brightness: 0.0)
+      }
+
+      return MeshVertex(position: position, color: color)
+    }
+  }
+
+  /// A custom mesh generator.
+  static func custom(columns: Int, rows: Int) -> MeshGenerator {
+    MeshGenerator(columns: columns, rows: rows) { row, column, configuration, helper in
+      let position = if case .center = helper.location(row, column), configuration.randomizesPositions {
+        helper.randomPosition(for: row, and: column)
+      } else {
+        helper.position(for: row, and: column)
+      }
+
+      return MeshVertex(
+        position: position,
+        color: HSB(hue: .zero, saturation: 0.0, brightness: 0.0)
+      )
     }
   }
 }

@@ -10,15 +10,28 @@ import Foundation
 
 /// A type that represents the aspect ratio of a content.
 struct AspectRatio {
+
+  // MARK: - Stored Properties
+
   /// A label that describes the aspect ratio.
   let label: String
 
   /// The value of the aspect ratio.
   let value: CGFloat
 
+  // MARK: - Init
+
   init(_ label: String, value: CGFloat) {
     self.label = label
     self.value = value
+  }
+
+  // MARK: - Functions
+
+  /// Returns the value of the aspect ratio depending on the passed size.
+  /// - Parameter size: The size of the content.
+  func value(for size: CGSize) -> CGFloat {
+    size.width > size.height ? value : 1 / value
   }
 }
 

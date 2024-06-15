@@ -22,11 +22,16 @@ struct MeshCanvasView: View {
   // MARK: - Body
 
   var body: some View {
-    MeshGradientView(grid: grid)
-      .overlay {
-        if isMeshVerticesConfigurationVisible {
-          MeshVerticesConfigurationView(grid: grid)
+    GeometryReader { geometry in
+      MeshGradientView(grid: grid)
+        .clipShape(.rect(cornerRadius: 24))
+        .overlay {
+          if isMeshVerticesConfigurationVisible {
+            MeshVerticesConfigurationView(grid: grid)
+          }
         }
-      }
+        .aspectRatio(grid.aspectRatio.value(for: geometry.size), contentMode: .fit)
+        .frame(width: geometry.size.width, height: geometry.size.height)
+    }
   }
 }

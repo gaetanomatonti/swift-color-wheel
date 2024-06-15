@@ -31,9 +31,14 @@ struct ColorWheel: View {
 
   // MARK: - Computed Properties
 
+  private var hsb: HSB {
+    HSB(hue: hue, saturation: saturation, brightness: brightness)
+  }
+
   /// The additional colors in the current harmony color scheme.
   private var colors: [HSB] {
-    scheme.colors(from: hue, saturation: saturation, brightness: brightness)
+    scheme.colors(from: hsb)
+      .filter { $0.id != 0 }
   }
 
   // MARK: - Init
@@ -92,10 +97,14 @@ struct ColorWheel: View {
 // MARK: - Previews
 
 #Preview {
+  @Previewable @State var hue: Angle = .zero
+  @Previewable @State var saturation: Double = 1.0
+  @Previewable @State var brightness: Double = 1.0
+
   ColorWheel(
-    hue: .constant(.zero),
-    saturation: .constant(1), 
-    brightness: .constant(1),
+    hue: $hue,
+    saturation: $saturation,
+    brightness: $brightness,
     scheme: .triad
   )
   .padding(48)

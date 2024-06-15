@@ -14,13 +14,28 @@ struct MeshView: View {
 
   // MARK: - Stored Properties
 
+  /// The selected preset to generate the mesh.
+  @State private var preset: MeshPreset
+
   /// The grid that represents the mesh.
-  @State private var grid = MeshGrid(with: .rainbow(columns: 3, rows: 3))
+  @State private var grid: MeshGrid
 
   /// Whether the mesh vertices configuration is visible in the canvas.
   ///
   /// Setting this to true, allows interacting with the vertices.
-  @State private var isMeshVerticesConfigurationVisible = false
+  @State private var isMeshVerticesConfigurationVisible: Bool
+
+  /// Whether the configurator is visible.
+  @State private var isConfiguratorVisible: Bool
+
+  // MARK: - Init
+
+  init(preset: MeshPreset = .rainbow) {
+    self.preset = preset
+    self.grid = MeshGrid(with: preset.generator)
+    self.isMeshVerticesConfigurationVisible = false
+    self.isConfiguratorVisible = false
+  }
 
   // MARK: - Body
 
@@ -33,12 +48,38 @@ struct MeshView: View {
     .toolbar {
       ToolbarItem(placement: .navigation) {
         Toggle(isOn: $isMeshVerticesConfigurationVisible.animation(.snappy)) {
-          Label("Edit mesh", systemImage: "circle.grid.3x3")
+          Label("Edit grid", systemImage: "circle.grid.3x3")
         }
         .toggleStyle(.button)
         .buttonStyle(.bordered)
         .buttonBorderShape(.circle)
       }
+
+      ToolbarItem(placement: .navigation) {
+        Toggle(isOn: $isConfiguratorVisible) {
+          Label("Edit mesh", systemImage: "slider.horizontal.3")
+        }
+        .toggleStyle(.button)
+        .buttonStyle(.bordered)
+        .buttonBorderShape(.circle)
+      }
+
+      ToolbarItem(placement: .bottomBar) {
+        Button {
+          grid.randomize(from: preset)
+        } label: {
+          Label("Randomize", systemImage: "dice")
+        }
+      }
+    }
+    .sheet(isPresented: $isConfiguratorVisible) {
+      NavigationStack {
+        MeshConfiguratorView(selectedPreset: $preset, aspectRatio: $grid.aspectRatio)
+      }
+      .presentationDetents([.medium, .large])
+    }
+    .onChange(of: preset) { oldValue, newValue in
+      grid.update(with: newValue)
     }
   }
 }
