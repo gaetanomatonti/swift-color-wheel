@@ -81,7 +81,9 @@ extension MeshGenerator {
       let position = helper.position(for: row, and: column)
 
       /// The offset position, so that the it falls in the range [-1, 1]
-      let offsetPosition = (position - center).normalized
+      var offsetPosition = position - center
+      offsetPosition = offsetPosition * 2.0
+      offsetPosition = offsetPosition.limit(1)
 
       let hue = atan2(offsetPosition.y, offsetPosition.x)
       let saturation = offsetPosition.magnitude
