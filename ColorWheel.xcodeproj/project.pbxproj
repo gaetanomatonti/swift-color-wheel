@@ -15,6 +15,16 @@
 		9B2E406D2B9BE35B00FB19C1 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E406C2B9BE35B00FB19C1 /* Color+Extensions.swift */; };
 		9B2E406F2B9BE4F300FB19C1 /* ColorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E406E2B9BE4F300FB19C1 /* ColorPoint.swift */; };
 		9B479CEB2BC818820029BA60 /* ColorSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B479CEA2BC818820029BA60 /* ColorSlider.swift */; };
+		9B5B33F32C1C6AF10020E8E3 /* GridHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B33F22C1C6AF10020E8E3 /* GridHelper.swift */; };
+		9B5B33F72C1C8C980020E8E3 /* MeshGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B33F62C1C8C980020E8E3 /* MeshGenerator.swift */; };
+		9B5B33F92C1C8F370020E8E3 /* LinearInterpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B33F82C1C8F300020E8E3 /* LinearInterpolation.swift */; };
+		9B5B33FB2C1D7C1F0020E8E3 /* VertexLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B33FA2C1D7C1F0020E8E3 /* VertexLocation.swift */; };
+		9B5B33FD2C1D7D780020E8E3 /* AspectRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B33FC2C1D7D780020E8E3 /* AspectRatio.swift */; };
+		9B5E60952C18E789006225DA /* MeshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E60942C18E789006225DA /* MeshView.swift */; };
+		9B5E60972C19BB8D006225DA /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E60962C19BB8D006225DA /* ColorPicker.swift */; };
+		9B5E609E2C19C89A006225DA /* MeshVertexControlPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E609C2C19C89A006225DA /* MeshVertexControlPoint.swift */; };
+		9B5E60A02C19CA64006225DA /* MeshVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E609F2C19CA64006225DA /* MeshVertex.swift */; };
+		9B5E60A22C19CB4B006225DA /* MeshConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E60A12C19CB45006225DA /* MeshConfigurationView.swift */; };
 		9B6D60572B9C7516004D511D /* Angle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D60562B9C7516004D511D /* Angle+Extensions.swift */; };
 		9B6D60592B9C761A004D511D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D60582B9C761A004D511D /* ContentView.swift */; };
 		9B6D605D2B9C76CA004D511D /* GradientPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D605C2B9C76CA004D511D /* GradientPalette.swift */; };
@@ -30,7 +40,19 @@
 		9BC4829C2B9A6FF000F5A777 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC4829B2B9A6FF000F5A777 /* Assets.xcassets */; };
 		9BC4829F2B9A6FF000F5A777 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC4829E2B9A6FF000F5A777 /* Preview Assets.xcassets */; };
 		9BC482A62B9A700200F5A777 /* ColorWheel.metal in Sources */ = {isa = PBXBuildFile; fileRef = 9BC482A52B9A700200F5A777 /* ColorWheel.metal */; };
+		9BD5B4052C1ACF9100CE2F0C /* MeshGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD5B4042C1ACF9100CE2F0C /* MeshGrid.swift */; };
+		9BD5B40D2C1AD08F00CE2F0C /* ColorWheelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD5B40C2C1AD08F00CE2F0C /* ColorWheelTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9BD5B40E2C1AD08F00CE2F0C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9BC4828C2B9A6FEF00F5A777 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9BC482932B9A6FEF00F5A777;
+			remoteInfo = ColorWheel;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		9B2E405F2B9BB02000FB19C1 /* ControlPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPoint.swift; sourceTree = "<group>"; };
@@ -40,6 +62,16 @@
 		9B2E406C2B9BE35B00FB19C1 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		9B2E406E2B9BE4F300FB19C1 /* ColorPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPoint.swift; sourceTree = "<group>"; };
 		9B479CEA2BC818820029BA60 /* ColorSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSlider.swift; sourceTree = "<group>"; };
+		9B5B33F22C1C6AF10020E8E3 /* GridHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridHelper.swift; sourceTree = "<group>"; };
+		9B5B33F62C1C8C980020E8E3 /* MeshGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGenerator.swift; sourceTree = "<group>"; };
+		9B5B33F82C1C8F300020E8E3 /* LinearInterpolation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearInterpolation.swift; sourceTree = "<group>"; };
+		9B5B33FA2C1D7C1F0020E8E3 /* VertexLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VertexLocation.swift; sourceTree = "<group>"; };
+		9B5B33FC2C1D7D780020E8E3 /* AspectRatio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatio.swift; sourceTree = "<group>"; };
+		9B5E60942C18E789006225DA /* MeshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshView.swift; sourceTree = "<group>"; };
+		9B5E60962C19BB8D006225DA /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		9B5E609C2C19C89A006225DA /* MeshVertexControlPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshVertexControlPoint.swift; sourceTree = "<group>"; };
+		9B5E609F2C19CA64006225DA /* MeshVertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshVertex.swift; sourceTree = "<group>"; };
+		9B5E60A12C19CB45006225DA /* MeshConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshConfigurationView.swift; sourceTree = "<group>"; };
 		9B6D60562B9C7516004D511D /* Angle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+Extensions.swift"; sourceTree = "<group>"; };
 		9B6D60582B9C761A004D511D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9B6D605C2B9C76CA004D511D /* GradientPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientPalette.swift; sourceTree = "<group>"; };
@@ -56,6 +88,9 @@
 		9BC4829B2B9A6FF000F5A777 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BC4829E2B9A6FF000F5A777 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9BC482A52B9A700200F5A777 /* ColorWheel.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ColorWheel.metal; sourceTree = "<group>"; };
+		9BD5B4042C1ACF9100CE2F0C /* MeshGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGrid.swift; sourceTree = "<group>"; };
+		9BD5B40A2C1AD08F00CE2F0C /* ColorWheelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorWheelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BD5B40C2C1AD08F00CE2F0C /* ColorWheelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +99,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B2709A82BC4A0EB0002C574 /* Vectors in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9BD5B4072C1AD08F00CE2F0C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,12 +123,14 @@
 		9B2E405E2B9BB00F00FB19C1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9B5E609D2C19C89A006225DA /* Mesh */,
 				9B71497F2BC9E645006F9BAD /* ColorSlider */,
 				9B6D60582B9C761A004D511D /* ContentView.swift */,
 				9BC482992B9A6FEF00F5A777 /* ColorWheel.swift */,
 				9B2E405F2B9BB02000FB19C1 /* ControlPoint.swift */,
 				9B2E406E2B9BE4F300FB19C1 /* ColorPoint.swift */,
 				9B6D605C2B9C76CA004D511D /* GradientPalette.swift */,
+				9B5E60962C19BB8D006225DA /* ColorPicker.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -94,6 +138,7 @@
 		9B2E40612B9BB22200FB19C1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9B5B33F82C1C8F300020E8E3 /* LinearInterpolation.swift */,
 				9B2E40622B9BB22F00FB19C1 /* CGRect+Extension.swift */,
 				9B2E406C2B9BE35B00FB19C1 /* Color+Extensions.swift */,
 				9B6D60562B9C7516004D511D /* Angle+Extensions.swift */,
@@ -107,11 +152,27 @@
 		9B2E40662B9BD86800FB19C1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9B5E609F2C19CA64006225DA /* MeshVertex.swift */,
+				9B5B33F22C1C6AF10020E8E3 /* GridHelper.swift */,
+				9BD5B4042C1ACF9100CE2F0C /* MeshGrid.swift */,
 				9B2E40642B9BCA2400FB19C1 /* Scheme.swift */,
 				9B2E40672B9BD87300FB19C1 /* HSB.swift */,
 				9B7149772BC9E3C6006F9BAD /* PercentageConvertible.swift */,
+				9B5B33F62C1C8C980020E8E3 /* MeshGenerator.swift */,
+				9B5B33FA2C1D7C1F0020E8E3 /* VertexLocation.swift */,
+				9B5B33FC2C1D7D780020E8E3 /* AspectRatio.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		9B5E609D2C19C89A006225DA /* Mesh */ = {
+			isa = PBXGroup;
+			children = (
+				9B5E60A12C19CB45006225DA /* MeshConfigurationView.swift */,
+				9B5E60942C18E789006225DA /* MeshView.swift */,
+				9B5E609C2C19C89A006225DA /* MeshVertexControlPoint.swift */,
+			);
+			path = Mesh;
 			sourceTree = "<group>";
 		};
 		9B71497F2BC9E645006F9BAD /* ColorSlider */ = {
@@ -129,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				9BC482962B9A6FEF00F5A777 /* ColorWheel */,
+				9BD5B40B2C1AD08F00CE2F0C /* ColorWheelTests */,
 				9BC482952B9A6FEF00F5A777 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -137,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				9BC482942B9A6FEF00F5A777 /* ColorWheel.app */,
+				9BD5B40A2C1AD08F00CE2F0C /* ColorWheelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,6 +226,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		9BD5B40B2C1AD08F00CE2F0C /* ColorWheelTests */ = {
+			isa = PBXGroup;
+			children = (
+				9BD5B40C2C1AD08F00CE2F0C /* ColorWheelTests.swift */,
+			);
+			path = ColorWheelTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -186,6 +257,24 @@
 			productReference = 9BC482942B9A6FEF00F5A777 /* ColorWheel.app */;
 			productType = "com.apple.product-type.application";
 		};
+		9BD5B4092C1AD08F00CE2F0C /* ColorWheelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9BD5B4102C1AD08F00CE2F0C /* Build configuration list for PBXNativeTarget "ColorWheelTests" */;
+			buildPhases = (
+				9BD5B4062C1AD08F00CE2F0C /* Sources */,
+				9BD5B4072C1AD08F00CE2F0C /* Frameworks */,
+				9BD5B4082C1AD08F00CE2F0C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9BD5B40F2C1AD08F00CE2F0C /* PBXTargetDependency */,
+			);
+			name = ColorWheelTests;
+			productName = ColorWheelTests;
+			productReference = 9BD5B40A2C1AD08F00CE2F0C /* ColorWheelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -193,11 +282,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					9BC482932B9A6FEF00F5A777 = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					9BD5B4092C1AD08F00CE2F0C = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 9BC482932B9A6FEF00F5A777;
 					};
 				};
 			};
@@ -218,6 +311,7 @@
 			projectRoot = "";
 			targets = (
 				9BC482932B9A6FEF00F5A777 /* ColorWheel */,
+				9BD5B4092C1AD08F00CE2F0C /* ColorWheelTests */,
 			);
 		};
 /* End PBXProject section */
@@ -232,6 +326,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9BD5B4082C1AD08F00CE2F0C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -239,30 +340,57 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B5B33FB2C1D7C1F0020E8E3 /* VertexLocation.swift in Sources */,
 				9B479CEB2BC818820029BA60 /* ColorSlider.swift in Sources */,
 				9B2E40602B9BB02000FB19C1 /* ControlPoint.swift in Sources */,
 				9B78F2822BC9E80900B0275D /* ColorSlider+Grabber.swift in Sources */,
+				9B5B33F92C1C8F370020E8E3 /* LinearInterpolation.swift in Sources */,
 				9B6D60572B9C7516004D511D /* Angle+Extensions.swift in Sources */,
 				9B7149812BC9E656006F9BAD /* ColorSlider+Style.swift in Sources */,
+				9B5E60A22C19CB4B006225DA /* MeshConfigurationView.swift in Sources */,
 				9B71497E2BC9E5D3006F9BAD /* ClosedRange+PercentageConvertible.swift in Sources */,
 				9B2E40682B9BD87300FB19C1 /* HSB.swift in Sources */,
 				9B6D605D2B9C76CA004D511D /* GradientPalette.swift in Sources */,
 				9B2E406D2B9BE35B00FB19C1 /* Color+Extensions.swift in Sources */,
+				9BD5B4052C1ACF9100CE2F0C /* MeshGrid.swift in Sources */,
+				9B5E60952C18E789006225DA /* MeshView.swift in Sources */,
 				9BC482A62B9A700200F5A777 /* ColorWheel.metal in Sources */,
 				9B71497A2BC9E466006F9BAD /* BinaryFloatingPoint+PercentageConvertible.swift in Sources */,
 				9BC4829A2B9A6FEF00F5A777 /* ColorWheel.swift in Sources */,
 				9B2E40632B9BB22F00FB19C1 /* CGRect+Extension.swift in Sources */,
+				9B5E60A02C19CA64006225DA /* MeshVertex.swift in Sources */,
 				9B2E406F2B9BE4F300FB19C1 /* ColorPoint.swift in Sources */,
+				9B5E60972C19BB8D006225DA /* ColorPicker.swift in Sources */,
 				9B71497C2BC9E54F006F9BAD /* Angle+PercentageConvertible.swift in Sources */,
 				9B6D60592B9C761A004D511D /* ContentView.swift in Sources */,
 				9B78F2842BC9F07F00B0275D /* ColorSlider+Track.swift in Sources */,
+				9B5B33F72C1C8C980020E8E3 /* MeshGenerator.swift in Sources */,
+				9B5E609E2C19C89A006225DA /* MeshVertexControlPoint.swift in Sources */,
 				9B2E40652B9BCA2400FB19C1 /* Scheme.swift in Sources */,
+				9B5B33FD2C1D7D780020E8E3 /* AspectRatio.swift in Sources */,
 				9B7149782BC9E3C6006F9BAD /* PercentageConvertible.swift in Sources */,
+				9B5B33F32C1C6AF10020E8E3 /* GridHelper.swift in Sources */,
 				9BC482982B9A6FEF00F5A777 /* ColorWheelApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9BD5B4062C1AD08F00CE2F0C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BD5B40D2C1AD08F00CE2F0C /* ColorWheelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9BD5B40F2C1AD08F00CE2F0C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9BC482932B9A6FEF00F5A777 /* ColorWheel */;
+			targetProxy = 9BD5B40E2C1AD08F00CE2F0C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		9BC482A02B9A6FF000F5A777 /* Debug */ = {
@@ -395,11 +523,13 @@
 				DEVELOPMENT_TEAM = 7G4N3SZHJZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Let me save this amazing wallpaper in your pohto library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -407,8 +537,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gaetanomatonti.ColorWheel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -424,11 +558,13 @@
 				DEVELOPMENT_TEAM = 7G4N3SZHJZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Let me save this amazing wallpaper in your pohto library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -436,9 +572,51 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gaetanomatonti.ColorWheel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9BD5B4112C1AD08F00CE2F0C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7G4N3SZHJZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gaetanomatonti.ColorWheelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ColorWheel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ColorWheel";
+			};
+			name = Debug;
+		};
+		9BD5B4122C1AD08F00CE2F0C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7G4N3SZHJZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gaetanomatonti.ColorWheelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ColorWheel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ColorWheel";
 			};
 			name = Release;
 		};
@@ -459,6 +637,15 @@
 			buildConfigurations = (
 				9BC482A32B9A6FF000F5A777 /* Debug */,
 				9BC482A42B9A6FF000F5A777 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9BD5B4102C1AD08F00CE2F0C /* Build configuration list for PBXNativeTarget "ColorWheelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9BD5B4112C1AD08F00CE2F0C /* Debug */,
+				9BD5B4122C1AD08F00CE2F0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
