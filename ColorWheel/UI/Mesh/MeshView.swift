@@ -68,6 +68,7 @@ struct MeshView: View {
       NavigationStack {
         MeshConfiguratorView(selectedPreset: $preset, aspectRatio: $grid.aspectRatio)
       }
+      .presentationDetents([.medium, .large])
     }
     .onChange(of: preset) { oldValue, newValue in
       grid.update(with: newValue)

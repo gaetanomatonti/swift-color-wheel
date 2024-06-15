@@ -42,9 +42,33 @@ struct MeshConfiguratorView: View {
   // MARK: - Body
 
   var body: some View {
+    content
+      .onChange(of: selectedPreset) { oldValue, newValue in
+        columns = newValue.generator.columns
+        rows = newValue.generator.rows
+      }
+      .navigationTitle("Configuration")
+      .toolbarTitleDisplayMode(.inline)
+      .toolbar {
+        ToolbarItem(placement: .navigation) {
+          Button("Done") {
+            dismiss()
+          }
+        }
+      }
+  }
+
+  // MARK: - Subviews
+
+  #if os(iOS)
+  private var content: some View {
     Form {
       Section {
         presetPicker
+      }
+
+      Section {
+        aspectRatioPicker
       }
 
       if case .custom = selectedPreset.id {
@@ -60,27 +84,45 @@ struct MeshConfiguratorView: View {
           selectedPreset = MeshPreset.custom(columns: columns, rows: newValue)
         }
       }
-
-      Section {
-        aspectRatioPicker
-      }
-    }
-    .onChange(of: selectedPreset) { oldValue, newValue in
-      columns = newValue.generator.columns
-      rows = newValue.generator.rows
-    }
-    .navigationTitle("Configuration")
-    .toolbarTitleDisplayMode(.inline)
-    .toolbar {
-      ToolbarItem(placement: .navigation) {
-        Button("Done") {
-          dismiss()
-        }
-      }
     }
   }
+  #endif
 
-  // MARK: - Subviews
+  #if os(macOS)
+  private var content: some View {
+    VStack {
+      Spacer()
+
+      HStack {
+        Spacer()
+
+        Form {
+          presetPicker
+
+          aspectRatioPicker
+
+          if case .custom = selectedPreset.id {
+            Group {
+              columnsStepper
+
+              rowsStepper
+            }
+            .onChange(of: columns) { oldValue, newValue in
+              selectedPreset = MeshPreset.custom(columns: newValue, rows: rows)
+            }
+            .onChange(of: rows) { oldValue, newValue in
+              selectedPreset = MeshPreset.custom(columns: columns, rows: newValue)
+            }
+          }
+        }
+
+        Spacer()
+      }
+
+      Spacer()
+    }
+  }
+  #endif
 
   /// The picker to select a mesh preset.
   private var presetPicker: some View {
