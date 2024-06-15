@@ -23,15 +23,16 @@ struct ContentView: View {
 
   /// The selected color harmony scheme.
   @State private var scheme: Scheme = .monochromatic
-  
+
   // MARK: - Computed Properties
 
-  /// The colors selected by the harmony scheme.
-  var colors: [HSB] {
-    var colors = scheme.colors(from: hue, saturation: saturation, brightness: brightness)
-    colors.append(HSB(id: 0, hue: hue, saturation: saturation, brightness: brightness))
+  private var hsb: HSB {
+    HSB(hue: hue, saturation: saturation, brightness: brightness)
+  }
 
-    return colors.sorted { $0.hue < $1.hue }
+  /// The colors selected by the harmony scheme.
+  private var colors: [HSB] {
+    scheme.colors(from: hsb)
   }
 
   // MARK: - Body

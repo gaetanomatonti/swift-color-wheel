@@ -12,12 +12,15 @@ import SwiftUI
 struct ColorScheme {
 
   /// The closure that computes the colors in the scheme.
-  typealias ColorsProvider = () -> [HSB]
+  typealias ColorsProvider = (HSB) -> [HSB]
 
   // MARK: - Stored Properties
 
   /// The label that describes the color scheme.
   let label: String
+
+  /// The base color of the scheme.
+  let baseColor: HSB
 
   /// The closure that computes the colors in the scheme.
   private let colorsProvider: ColorsProvider
@@ -26,7 +29,8 @@ struct ColorScheme {
 
   /// The colors in `HSB` format.
   var hsbColors: [HSB] {
-    colorsProvider()
+    let colors = [baseColor] + colorsProvider(baseColor)
+    return colors.sorted { $0.hue < $1.hue }
   }
 
   /// The SwiftUI `Color` representation of the colors.
@@ -36,25 +40,50 @@ struct ColorScheme {
 
   // MARK: - Init
 
-  init(_ label: String, colorsProvider: @escaping ColorsProvider) {
+  init(_ label: String, baseColor: HSB, colorsProvider: @escaping ColorsProvider) {
     self.label = label
+    self.baseColor = baseColor
     self.colorsProvider = colorsProvider
   }
 }
 
 extension ColorScheme {
   static func monochromatic(from color: HSB) -> ColorScheme {
-    ColorScheme("Monochromatic") {
-      [color]
-    }
+    ColorScheme("Monochromatic", baseColor: color) { _ in [] }
   }
 
   static func analogous(from color: HSB, distance: Angle) -> ColorScheme {
-    ColorScheme("Analogous") {
+    ColorScheme("Analogous", baseColor: color) { base in
       [
-        HSB(hue: color.hue - distance, saturation: color.saturation, brightness: color.brightness),
-        color,
-        HSB(hue: color.hue + distance, saturation: color.saturation, brightness: color.brightness),
+        HSB(id: 1, hue: base.hue - distance, saturation: base.saturation, brightness: base.brightness),
+        HSB(id: 2, hue: base.hue + distance, saturation: base.saturation, brightness: base.brightness),
+      ]
+    }
+  }
+
+  static func complementary(from color: HSB) -> ColorScheme {
+    ColorScheme("Complementary", baseColor: color) { base in
+      [
+        HSB(id: 1, hue: base.hue + .degrees(180), saturation: base.saturation, brightness: base.brightness),
+      ]
+    }
+  }
+
+  static func triad(from color: HSB) -> ColorScheme {
+    ColorScheme("Triad", baseColor: color) { base in
+      [
+        HSB(id: 1, hue: base.hue + .degrees(120), saturation: base.saturation, brightness: base.brightness),
+        HSB(id: 2, hue: base.hue + .degrees(240), saturation: base.saturation, brightness: base.brightness),
+      ]
+    }
+  }
+
+  static func square(from color: HSB) -> ColorScheme {
+    ColorScheme("Square", baseColor: color) { base in
+      [
+        HSB(id: 1, hue: base.hue + .degrees(90), saturation: base.saturation, brightness: base.brightness),
+        HSB(id: 2, hue: base.hue + .degrees(180), saturation: base.saturation, brightness: base.brightness),
+        HSB(id: 3, hue: base.hue + .degrees(270), saturation: base.saturation, brightness: base.brightness),
       ]
     }
   }
@@ -69,7 +98,7 @@ enum Scheme: Int, CaseIterable {
 
   /// The analogous scheme.
   ///
-  /// This scheme provides colors that are 30° apart from the starting hue.
+  /// This scheme provides colors that are slightly distant from the starting hue.
   case analogous
 
   /// The complementary scheme.
@@ -87,8 +116,6 @@ enum Scheme: Int, CaseIterable {
   /// This scheme provides a color that are 90° degrees apart from the starting hue.
   case square
 }
-
-// MARK: - Computed Properties
 
 extension Scheme {
   /// The title of the scheme.
@@ -110,51 +137,26 @@ extension Scheme {
         "Square"
     }
   }
-}
 
-// MARK: - Functions
-
-extension Scheme {
-  /// The array containing the angles of the hue shifts in the scheme.
-  var shiftAngles: [Angle] {
+  /// Computes the colors in the harmony schemes from a base color.
+  /// - Parameter base: The base color of the scheme.
+  /// - Returns: The array of `HSB` colors in the harmony scheme.
+  func colors(from base: HSB) -> [HSB] {
     switch self {
       case .monochromatic:
-        return []
+        return ColorScheme.monochromatic(from: base).hsbColors
 
       case .analogous:
-        return [
-          .degrees(-30),
-          .degrees(30),
-        ]
+        return ColorScheme.analogous(from: base, distance: .degrees(25)).hsbColors
 
       case .complementary:
-        return [
-          .degrees(180),
-        ]
+        return ColorScheme.complementary(from: base).hsbColors
 
       case .triad:
-        return [
-          .degrees(120),
-          .degrees(240),
-        ]
+        return ColorScheme.triad(from: base).hsbColors
 
       case .square:
-        return [
-          .degrees(90),
-          .degrees(180),
-          .degrees(270),
-        ]
-    }
-  }
-
-  /// Computes the additional colors in the harmony schemes starting from the passed hue and saturation.
-  /// - Parameters:
-  ///   - hue: The hue of the starting color.
-  ///   - saturation: The saturation of the starting color.
-  /// - Returns: The array of `HSB` colors in the harmony scheme.
-  func colors(from hue: Angle, saturation: CGFloat, brightness: CGFloat) -> [HSB] {
-    shiftAngles.enumerated().map { index, angle in
-      HSB(id: index + 1, hue: hue + angle, saturation: saturation, brightness: brightness)
+        return ColorScheme.square(from: base).hsbColors
     }
   }
 }
