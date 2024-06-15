@@ -9,8 +9,15 @@
 import Foundation
 import SwiftUI
 
+/// A view that displays the control points to edit the grid of a mesh.
 struct MeshVerticesConfigurationView: View {
+
+  // MARK: - Stored Properties
+
+  /// The grid that represents the mesh.
   @Bindable var grid: MeshGrid
+
+  // MARK: - Body
 
   var body: some View {
     ForEach(grid.flattenedVertices) { vertex in

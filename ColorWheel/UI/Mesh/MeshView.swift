@@ -9,10 +9,20 @@
 import Foundation
 import SwiftUI
 
+/// A view that displays an interactive mesh canvas.
 struct MeshView: View {
+
+  // MARK: - Stored Properties
+
+  /// The grid that represents the mesh.
   @State private var grid = MeshGrid(with: .rainbow(columns: 3, rows: 3))
 
+  /// Whether the mesh vertices configuration is visible in the canvas.
+  ///
+  /// Setting this to true, allows interacting with the vertices.
   @State private var isMeshVerticesConfigurationVisible = false
+
+  // MARK: - Body
 
   var body: some View {
     MeshCanvasView(

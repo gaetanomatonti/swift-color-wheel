@@ -8,8 +8,15 @@
 
 import SwiftUI
 
+/// A view that displays a mesh gradient.
 struct MeshGradientView: View {
+
+  // MARK: - Stored Properties
+
+  /// The grid that represents the mesh.
   @Bindable var grid: MeshGrid
+
+  // MARK: - Body
 
   var body: some View {
     MeshGradient(

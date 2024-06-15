@@ -33,7 +33,7 @@ struct MeshVertexControlPoint: View {
       let frame = geometry.frame(in: .local)
 
       ColorPoint(color: vertex.color)
-        .frame(width: 48, height: 48)
+        .frame(width: 40, height: 40)
         .position(vertexPosition(in: frame))
         #if os(macOS)
         .pointerStyle(isDragging ? .grabActive : .grabIdle) // bug: not updating?
