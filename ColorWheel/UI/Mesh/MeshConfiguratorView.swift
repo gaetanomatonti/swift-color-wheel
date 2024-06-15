@@ -13,6 +13,8 @@ struct MeshConfiguratorView: View {
 
   // MARK: - Stored Properties
 
+  @Environment(\.dismiss) private var dismiss
+
   /// The selected preset.
   @Binding var selectedPreset: MeshPreset
 
@@ -66,6 +68,15 @@ struct MeshConfiguratorView: View {
     .onChange(of: selectedPreset) { oldValue, newValue in
       columns = newValue.generator.columns
       rows = newValue.generator.rows
+    }
+    .navigationTitle("Configuration")
+    .toolbarTitleDisplayMode(.inline)
+    .toolbar {
+      ToolbarItem(placement: .navigation) {
+        Button("Done") {
+          dismiss()
+        }
+      }
     }
   }
 

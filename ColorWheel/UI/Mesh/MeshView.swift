@@ -65,7 +65,9 @@ struct MeshView: View {
       }
     }
     .sheet(isPresented: $isConfiguratorVisible) {
-      MeshConfiguratorView(selectedPreset: $preset, aspectRatio: $grid.aspectRatio)
+      NavigationStack {
+        MeshConfiguratorView(selectedPreset: $preset, aspectRatio: $grid.aspectRatio)
+      }
     }
     .onChange(of: preset) { oldValue, newValue in
       grid.update(with: newValue)
