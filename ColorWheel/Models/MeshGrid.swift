@@ -79,7 +79,19 @@ class MeshGrid {
     self.matrix = generator.vertices
     self.aspectRatio = aspectRatio
   }
+
+  // MARK: - Functions
+
+  /// Updates the mesh from the specified `MeshPreset`.
+  func update(with preset: MeshPreset) {
+    let generator = preset.generator
+    matrix = generator.vertices
+    columns = generator.columns
+    rows = generator.rows
+  }
 }
+
+// MARK: - Environment
 
 extension EnvironmentValues {
   /// Whether the corners of the matrix are locked.

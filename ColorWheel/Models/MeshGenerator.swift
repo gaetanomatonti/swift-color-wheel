@@ -111,8 +111,8 @@ extension MeshGenerator {
     }
   }
 
-  static var empty: MeshGenerator {
-    MeshGenerator(columns: 3, rows: 3) { row, column, helper in
+  static func custom(columns: Int, rows: Int) -> MeshGenerator {
+    MeshGenerator(columns: columns, rows: rows) { row, column, helper in
       return MeshVertex(
         position: helper.position(for: row, and: column),
         color: HSB(hue: .zero, saturation: 0.0, brightness: 0.0)
@@ -122,10 +122,10 @@ extension MeshGenerator {
 }
 
 struct MeshPreset: Identifiable {
-  enum Identifier: String, Hashable, Equatable {
+  enum Identifier: Hashable, Equatable {
     case rainbow
     case aurora
-    case custom
+    case custom(columns: Int, rows: Int)
   }
 
   let id: Identifier
@@ -157,7 +157,15 @@ extension MeshPreset {
   }
 
   static var custom: MeshPreset {
-    MeshPreset(id: .custom, label: "Custom", generator: .empty)
+    .custom(columns: 3, rows: 3)
+  }
+
+  static func custom(columns: Int, rows: Int) -> MeshPreset {
+    MeshPreset(
+      id: .custom(columns: columns, rows: rows),
+      label: "Custom",
+      generator: .custom(columns: columns, rows: rows)
+    )
   }
 
   static var allCases: [MeshPreset] {

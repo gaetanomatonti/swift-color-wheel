@@ -13,14 +13,29 @@ struct MeshConfiguratorView: View {
 
   // MARK: - Stored Properties
 
-  /// The grid that represents the mesh to configure.
-  @Bindable var grid: MeshGrid
-
   /// The selected preset.
-  @State private var preset: MeshPreset = .rainbow
+  @Binding var selectedPreset: MeshPreset
+
+  /// The selected aspect ratio.
+  @Binding var aspectRatio: AspectRatio
+
+  /// The selected amount of columns.
+  @State private var columns: Int
+
+  /// The selected amount of rows.
+  @State private var rows: Int
 
   /// The range of allowed vertices in the rows and columns of the grid.
   private let verticesRange = 3...6
+
+  // MARK: - Init
+
+  init(selectedPreset: Binding<MeshPreset>, aspectRatio: Binding<AspectRatio>) {
+    self._selectedPreset = selectedPreset
+    self._aspectRatio = aspectRatio
+    self.columns = selectedPreset.wrappedValue.generator.columns
+    self.rows = selectedPreset.wrappedValue.generator.rows
+  }
 
   // MARK: - Body
 
@@ -30,15 +45,27 @@ struct MeshConfiguratorView: View {
         presetPicker
       }
 
-      if case .custom = preset {
+      if case .custom = selectedPreset.id {
         Section {
           columnsStepper
 
           rowsStepper
-
-          aspectRatioPicker
+        }
+        .onChange(of: columns) { oldValue, newValue in
+          selectedPreset = MeshPreset.custom(columns: newValue, rows: rows)
+        }
+        .onChange(of: rows) { oldValue, newValue in
+          selectedPreset = MeshPreset.custom(columns: columns, rows: newValue)
         }
       }
+
+      Section {
+        aspectRatioPicker
+      }
+    }
+    .onChange(of: selectedPreset) { oldValue, newValue in
+      columns = newValue.generator.columns
+      rows = newValue.generator.rows
     }
   }
 
@@ -49,43 +76,40 @@ struct MeshConfiguratorView: View {
     HStack(spacing: 16) {
       ForEach(MeshPreset.allCases) { preset in
         Button {
-          self.preset = preset
+          selectedPreset = preset
         } label: {
-          MeshPresetPreview(preset: preset, isSelected: self.preset == preset)
+          MeshPresetPreview(preset: preset, isSelected: selectedPreset == preset)
         }
         .buttonStyle(.plain)
       }
-    }
-    .onChange(of: preset) { oldValue, newValue in
-      print(newValue)
     }
   }
 
   /// The stepper to control the number of columns in the grid.
   private var columnsStepper: some View {
-    Stepper(value: $grid.columns, in: verticesRange) {
+    Stepper(value: $columns, in: verticesRange) {
       HStack {
         Text("Columns")
         Spacer()
-        Text("\(grid.columns)")
+        Text("\(columns)")
       }
     }
   }
 
   /// The stepper to control the number of rows in the grid.
   private var rowsStepper: some View {
-    Stepper(value: $grid.rows, in: verticesRange) {
+    Stepper(value: $rows, in: verticesRange) {
       HStack {
         Text("Rows")
         Spacer()
-        Text("\(grid.rows)")
+        Text("\(rows)")
       }
     }
   }
 
   /// The picker to select the aspect ratio of the mesh.
   private var aspectRatioPicker: some View {
-    Picker("Aspect Ratio", selection: $grid.aspectRatio) {
+    Picker("Aspect Ratio", selection: $aspectRatio) {
       ForEach(AspectRatio.availableValues) { aspectRatio in
         Text(aspectRatio.label)
           .tag(aspectRatio)
@@ -95,6 +119,8 @@ struct MeshConfiguratorView: View {
 }
 
 #Preview {
-  @Previewable @State var grid = MeshGrid(with: .rainbow(columns: 5, rows: 5))
-  MeshConfiguratorView(grid: grid)
+  @Previewable @State var preset = MeshPreset.rainbow
+  @Previewable @State var aspectRatio = AspectRatio.square
+
+  MeshConfiguratorView(selectedPreset: $preset, aspectRatio: $aspectRatio)
 }
