@@ -19,6 +19,7 @@ struct MeshView: View {
       grid: grid,
       isMeshVerticesConfigurationVisible: $isMeshVerticesConfigurationVisible
     )
+    .padding(32)
     .toolbar {
       ToolbarItem(placement: .navigation) {
         Toggle(isOn: $isMeshVerticesConfigurationVisible.animation(.snappy)) {
