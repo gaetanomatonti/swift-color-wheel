@@ -26,7 +26,7 @@ struct HSB: Hashable, Identifiable {
 
   // MARK: - Init
 
-  init(id: Int, hue: Angle, saturation: Double, brightness: Double) {
+  init(id: Int = 0, hue: Angle, saturation: Double, brightness: Double) {
     self.id = id
     self.hue = hue
     self.saturation = saturation
