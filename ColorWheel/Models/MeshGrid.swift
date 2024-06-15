@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import Vectors
 
+/// An object that represents a grid of vertices in a mesh.
 @Observable
 class MeshGrid {
 
@@ -25,12 +26,12 @@ class MeshGrid {
   /// When edges are locked, vertices on the edges can only be moved on their parallel axis.
   /// For instance, vertices on the leading and trailing columns of the matrix can only move vertically,
   /// while vertices on the top and bottom rows can only move horizontally.
-  var areEdgesLocked = false
+  var areEdgesLocked = true
 
   /// Whether the corners of the matrix are locked.
   ///
   /// When corners are locked, they cannot be moved from their original position, maintaining the overall shape of the matrix.
-  var areCornersLocked = false
+  var areCornersLocked = true
 
   /// The matrix of vertices that make up the mesh.
   private(set) var matrix: [[MeshVertex]]
@@ -82,11 +83,15 @@ class MeshGrid {
       while j - i > 0 {
         let iPosition = helper.position(for: row, and: i + 1)
         let iColor = lerp(v1: matrix[row][i].hsbColor, v2: matrix[row][i + 1].hsbColor, t: 1 - iPosition.x)
-        newRow[i + 1] = MeshVertex(position: iPosition,color: iColor)
+        let iVertex = MeshVertex(position: iPosition,color: iColor)
+        iVertex.location = helper.location(row, i + 1)
+        newRow[i + 1] = iVertex
 
         let jPosition = helper.position(for: row, and: j)
         let jColor = lerp(v1: matrix[row][j - 1].hsbColor, v2: matrix[row][j].hsbColor, t: 1 - jPosition.x)
-        newRow[j] = MeshVertex(position: jPosition,color: jColor)
+        let jVertex = MeshVertex(position: jPosition,color: jColor)
+        jVertex.location = helper.location(row, j)
+        newRow[j] = jVertex
 
         i += 1
         j -= 1
@@ -97,10 +102,11 @@ class MeshGrid {
   }
 
   func removeColumn() {
-    // TODO: Implement (might reuse add)
+    removeColumn(at: (columns + 1) / 2)
   }
 
   func removeColumn(at columnIndex: Int) {
+    // TODO: improve lerp
     guard columnIndex > 0 && columnIndex < columns else {
       fatalError("The application only supports inserting between existing columns.")
     }
@@ -127,6 +133,7 @@ class MeshGrid {
   }
 
   func addRow(at rowIndex: Int) {
+    // TODO: improve lerp
     let rows = matrix.count
     guard rows > 1 else {
       print("Matrix must have at least two rows.")
@@ -163,6 +170,7 @@ class MeshGrid {
   }
 
   func removeRow(at rowIndex: Int) {
+    // TODO: improve lerp
     guard rows > 1 else {
       return
     }
@@ -194,4 +202,10 @@ class MeshGrid {
       }
     }
   }
+}
+
+extension EnvironmentValues {
+  @Entry var areGridCornersLocked = false
+
+  @Entry var areGridEdgesLocked = false
 }

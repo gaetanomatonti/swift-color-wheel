@@ -9,16 +9,25 @@ import SwiftUI
 
 /// A view that displays a draggable control point that controls color and position selection for a mesh vertex.
 struct MeshVertexControlPoint: View {
+
+  // MARK: - Stored Properties
+
   /// The vertex controlled by the control point.
   @Bindable var vertex: MeshVertex
 
   /// Whether the color customization of the vertex is enabled.
   ///
   /// This property controls the presentation of a color picker, allowing picking a color for the vertex.
-  @State private var isColorCustomizationEnabled = false
+  @State private var isColorCustomizationPresented = false
 
   /// Whether the user is dragging the control point.
   @State private var isDragging = false
+
+  // MARK: - Computed Properties
+
+  @Environment(\.areGridEdgesLocked) var areEdgesLocked: Bool
+
+  @Environment(\.areGridCornersLocked) var areCornersLocked: Bool
 
   // MARK: - Body
 
@@ -33,12 +42,12 @@ struct MeshVertexControlPoint: View {
         .pointerStyle(isDragging ? .grabActive : .grabIdle) // bug: not updating?
         #endif
         .onTapGesture(count: 2) {
-          isColorCustomizationEnabled.toggle()
+          isColorCustomizationPresented.toggle()
         }
         .gesture(
           DragGesture()
             .onChanged { gesture in
-              vertex.position = vertexPosition(from: gesture.location, in: frame)
+              updatePosition(for: vertex.location, from: gesture.location, in: frame)
               isDragging = true
             }
             .onEnded { _ in
@@ -46,13 +55,51 @@ struct MeshVertexControlPoint: View {
             }
         )
     }
-    .sheet(isPresented: $isColorCustomizationEnabled) {
+    .sheet(isPresented: $isColorCustomizationPresented) {
       ColorPicker(hue: $vertex.hsbColor.hue, saturation: $vertex.hsbColor.saturation, brightness: $vertex.hsbColor.brightness)
         .frame(minWidth: 320, minHeight: 440)
     }
   }
 
   // MARK: - Functions
+
+  /// Updates the position of the control point, depending on the location of the vertex.
+  ///
+  /// If the vertex is either on the corners or edges of the grid, we also check if they should be locked.
+  /// In that case, this method does not reposition the control point or does so only on a specific axis.
+  ///
+  /// - Parameters:
+  ///   - vertexLocation: The `VertexLocation` of the vertex.
+  ///   - location: The location of the drag gesture.
+  ///   - frame: The frame of the container view.
+  private func updatePosition(for vertexLocation: VertexLocation, from location: CGPoint, in frame: CGRect) {
+    let position = vertexPosition(from: location, in: frame)
+
+    switch vertexLocation {
+      case .corner:
+        if areCornersLocked {
+          break
+        } else {
+          updatePosition(for: .center, from: location, in: frame)
+        }
+
+      case let .edge(axis):
+        if areEdgesLocked {
+          switch axis {
+            case .horizontal:
+              vertex.position.x = position.x
+
+            case .vertical:
+              vertex.position.y = position.y
+          }
+        } else {
+          updatePosition(for: .center, from: location, in: frame)
+        }
+
+      case .center:
+        vertex.position = position
+    }
+  }
 
   /// Updates the position of the vertex.
   ///

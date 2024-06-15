@@ -20,6 +20,9 @@ class MeshVertex: Identifiable {
   /// The color of the vertex in `HSB` format.
   var hsbColor: HSB
 
+  /// The location of the vertex in the grid.
+  var location: VertexLocation
+
   // MARK: - Computed Properties
 
   /// The vector representation of the vertex.
@@ -41,16 +44,18 @@ class MeshVertex: Identifiable {
   init(position: CGPoint, color: HSB) {
     self.position = position
     self.hsbColor = color
+    self.location = .center
   }
 
   init(x: CGFloat, y: CGFloat, color: HSB) {
     self.position = CGPoint(x: x, y: y)
     self.hsbColor = color
+    self.location = .center
   }
 }
 
 extension MeshVertex: Equatable {
   static func ==(lhs: MeshVertex, rhs: MeshVertex) -> Bool {
-    lhs.position == rhs.position && lhs.hsbColor == rhs.hsbColor
+    lhs.id == rhs.id
   }
 }

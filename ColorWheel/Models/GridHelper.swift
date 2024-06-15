@@ -38,4 +38,60 @@ struct GridHelper {
       y: CGFloat(row) / CGFloat(rows - 1)
     )
   }
+
+  /// Computes the index of a vertex in a flattened list of vertices.
+  ///
+  /// This method converts the row and columns indices from a matrix into an index suitable for a flattened list.
+  ///
+  /// - Parameters:
+  ///   - row The row index of the vertex.
+  ///   - column: The column index of the vertex.
+  /// - Returns: The index for a flattened list.
+  func index(for row: Int, and column: Int) -> Int {
+    row * columns + column
+  }
+
+  /// Returns the location of the vertex in the grid.
+  /// - Parameters:
+  ///   - row The row index of the vertex.
+  ///   - column: The column index of the vertex.
+  /// - Returns: The `VertexLocation` of the vertex in the grid.
+  func location(_ row: Int, _ column: Int) -> VertexLocation {
+    if isCorner(row, column) {
+      return .corner
+    } else if isVerticalEdge(row, column) {
+      return .edge(axis: .vertical)
+    } else if isHorizontalEdge(row, column) {
+      return .edge(axis: .horizontal)
+    } else {
+      return .center
+    }
+  }
+
+  /// Checks whether the vertex at the specified row and column is a corner of the matrix.
+  /// - Parameters:
+  ///   - row The row index of the vertex.
+  ///   - column: The column index of the vertex.
+  /// - Returns: A `Bool` indicating whether the vertex is a corner of the matrix.
+  private func isCorner(_ row: Int, _ column: Int) -> Bool {
+    row == 0 && column == 0 || row == 0 && column == columns - 1 || row == rows - 1 && column == 0 || row == rows - 1 && column == columns - 1
+  }
+
+  /// Checks whether the vertex at the specified row and column is on either of the vertical edges of the matrix.
+  /// - Parameters:
+  ///   - row The row index of the vertex.
+  ///   - column: The column index of the vertex.
+  /// - Returns: A `Bool` indicating whether the vertex is on either of the vertical edges of the matrix.
+  private func isVerticalEdge(_ row: Int, _ column: Int) -> Bool {
+    column == 0 || column == columns - 1
+  }
+
+  /// Checks whether the vertex at the specified row and column is on either of the horizontal edges of the matrix.
+  /// - Parameters:
+  ///   - row The row index of the vertex.
+  ///   - column: The column index of the vertex.
+  /// - Returns: A `Bool` indicating whether the vertex is on either of the horizontal edges of the matrix.
+  private func isHorizontalEdge(_ row: Int, _ column: Int) -> Bool {
+    row == 0 || row == rows - 1
+  }
 }

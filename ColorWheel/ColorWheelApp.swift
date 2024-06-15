@@ -14,7 +14,6 @@ struct ColorWheelApp: App {
       NavigationStack {
         MeshView()
       }
-      .tint(.primary)
     }
   }
 }

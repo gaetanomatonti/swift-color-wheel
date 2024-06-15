@@ -18,6 +18,7 @@
 		9B5B33F32C1C6AF10020E8E3 /* GridHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B33F22C1C6AF10020E8E3 /* GridHelper.swift */; };
 		9B5B33F72C1C8C980020E8E3 /* MeshGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B33F62C1C8C980020E8E3 /* MeshGenerator.swift */; };
 		9B5B33F92C1C8F370020E8E3 /* LinearInterpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B33F82C1C8F300020E8E3 /* LinearInterpolation.swift */; };
+		9B5B33FB2C1D7C1F0020E8E3 /* VertexLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B33FA2C1D7C1F0020E8E3 /* VertexLocation.swift */; };
 		9B5E60952C18E789006225DA /* MeshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E60942C18E789006225DA /* MeshView.swift */; };
 		9B5E60972C19BB8D006225DA /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E60962C19BB8D006225DA /* ColorPicker.swift */; };
 		9B5E609E2C19C89A006225DA /* MeshVertexControlPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E609C2C19C89A006225DA /* MeshVertexControlPoint.swift */; };
@@ -63,6 +64,7 @@
 		9B5B33F22C1C6AF10020E8E3 /* GridHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridHelper.swift; sourceTree = "<group>"; };
 		9B5B33F62C1C8C980020E8E3 /* MeshGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGenerator.swift; sourceTree = "<group>"; };
 		9B5B33F82C1C8F300020E8E3 /* LinearInterpolation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearInterpolation.swift; sourceTree = "<group>"; };
+		9B5B33FA2C1D7C1F0020E8E3 /* VertexLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VertexLocation.swift; sourceTree = "<group>"; };
 		9B5E60942C18E789006225DA /* MeshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshView.swift; sourceTree = "<group>"; };
 		9B5E60962C19BB8D006225DA /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		9B5E609C2C19C89A006225DA /* MeshVertexControlPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshVertexControlPoint.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				9B2E40672B9BD87300FB19C1 /* HSB.swift */,
 				9B7149772BC9E3C6006F9BAD /* PercentageConvertible.swift */,
 				9B5B33F62C1C8C980020E8E3 /* MeshGenerator.swift */,
+				9B5B33FA2C1D7C1F0020E8E3 /* VertexLocation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B5B33FB2C1D7C1F0020E8E3 /* VertexLocation.swift in Sources */,
 				9B479CEB2BC818820029BA60 /* ColorSlider.swift in Sources */,
 				9B2E40602B9BB02000FB19C1 /* ControlPoint.swift in Sources */,
 				9B78F2822BC9E80900B0275D /* ColorSlider+Grabber.swift in Sources */,

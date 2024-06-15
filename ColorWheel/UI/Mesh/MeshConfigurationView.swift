@@ -20,6 +20,10 @@ struct MeshConfigurationView: View {
   /// The number of rows in the mesh.
   @Binding var rows: Int
 
+  @Binding var areCornersLocked: Bool
+
+  @Binding var areEdgesLocked: Bool
+
   /// The range of allowed columns and rows in the grid.
   private let pointsRange = 2...6
 
@@ -33,6 +37,10 @@ struct MeshConfigurationView: View {
         
         rowsStepper
 
+        cornersLock
+
+        edgesLock
+
         Button {
           dismiss()
         } label: {
@@ -44,9 +52,15 @@ struct MeshConfigurationView: View {
       columnsStepper
 
       rowsStepper
+
+      cornersLock
+
+      edgesLock
       #endif
     }
   }
+
+  // MARK: - Subviews
 
   private var columnsStepper: some View {
     Stepper(value: $columns, in: pointsRange) {
@@ -66,6 +80,14 @@ struct MeshConfigurationView: View {
         Text("\(rows)")
       }
     }
+  }
+
+  private var cornersLock: some View {
+    Toggle("Lock corners", isOn: $areCornersLocked)
+  }
+
+  private var edgesLock: some View {
+    Toggle("Lock edges", isOn: $areEdgesLocked)
   }
 }
 

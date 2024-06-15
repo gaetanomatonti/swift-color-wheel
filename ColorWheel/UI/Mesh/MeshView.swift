@@ -39,6 +39,8 @@ struct MeshView: View {
         ForEach(grid.flattenedVertices) { vertex in
           MeshVertexControlPoint(vertex: vertex)
             .transition(.opacity.combined(with: .blurReplace))
+            .environment(\.areGridEdgesLocked, grid.areEdgesLocked)
+            .environment(\.areGridCornersLocked, grid.areCornersLocked)
         }
       }
     }
@@ -65,11 +67,16 @@ struct MeshView: View {
         .buttonStyle(.bordered)
         .buttonBorderShape(.circle)
         .popover(isPresented: $isGridConfigurationEnabled) {
-          MeshConfigurationView(columns: $grid.columns, rows: $grid.rows)
-            #if os(iOS)
-            .frame(minWidth: 300, minHeight: 200)
-            .presentationCompactAdaptation(.popover)
-            #endif
+          MeshConfigurationView(
+            columns: $grid.columns,
+            rows: $grid.rows,
+            areCornersLocked: $grid.areCornersLocked,
+            areEdgesLocked: $grid.areEdgesLocked
+          )
+          #if os(iOS)
+          .frame(minWidth: 300, minHeight: 300)
+          .presentationCompactAdaptation(.popover)
+          #endif
         }
       }
 

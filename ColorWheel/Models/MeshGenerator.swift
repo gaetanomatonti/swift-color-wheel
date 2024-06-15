@@ -62,6 +62,7 @@ struct MeshGenerator {
     for row in 0..<rows {
       for column in 0..<columns {
         let vertex = vertexProvider(row, column, helper)
+        vertex.location = helper.location(row, column)
         vertices[row].insert(vertex, at: column)
       }
     }
