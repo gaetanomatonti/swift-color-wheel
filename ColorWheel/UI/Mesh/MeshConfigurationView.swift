@@ -24,6 +24,8 @@ struct MeshConfigurationView: View {
 
   @Binding var areEdgesLocked: Bool
 
+  @Binding var aspectRatio: AspectRatio
+
   /// The range of allowed columns and rows in the grid.
   private let pointsRange = 2...6
 
@@ -41,6 +43,8 @@ struct MeshConfigurationView: View {
 
         edgesLock
 
+        aspectRatioPicker
+
         Button {
           dismiss()
         } label: {
@@ -56,6 +60,8 @@ struct MeshConfigurationView: View {
       cornersLock
 
       edgesLock
+
+      aspectRatioPicker
       #endif
     }
   }
@@ -88,6 +94,15 @@ struct MeshConfigurationView: View {
 
   private var edgesLock: some View {
     Toggle("Lock edges", isOn: $areEdgesLocked)
+  }
+
+  private var aspectRatioPicker: some View {
+    Picker("Aspect Ratio", selection: $aspectRatio) {
+      ForEach(AspectRatio.values) { aspectRatio in
+        Text(aspectRatio.label)
+          .tag(aspectRatio)
+      }
+    }
   }
 }
 

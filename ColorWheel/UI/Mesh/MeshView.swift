@@ -31,19 +31,18 @@ struct MeshView: View {
   // MARK: - Body
 
   var body: some View {
-    ZStack {
-      mesh
-        .clipShape(.rect(cornerRadius: isMeshConfigurationEnabled ? 24 : .zero))
-
-      if isMeshConfigurationEnabled {
-        ForEach(grid.flattenedVertices) { vertex in
-          MeshVertexControlPoint(vertex: vertex)
-            .transition(.opacity.combined(with: .blurReplace))
-            .environment(\.areGridEdgesLocked, grid.areEdgesLocked)
-            .environment(\.areGridCornersLocked, grid.areCornersLocked)
+    mesh
+      .clipShape(.rect(cornerRadius: isMeshConfigurationEnabled ? 24 : .zero))
+      .overlay {
+        if isMeshConfigurationEnabled {
+          ForEach(grid.flattenedVertices) { vertex in
+            MeshVertexControlPoint(vertex: vertex)
+              .transition(.opacity.combined(with: .blurReplace))
+              .environment(\.areGridEdgesLocked, grid.areEdgesLocked)
+              .environment(\.areGridCornersLocked, grid.areCornersLocked)
+          }
         }
       }
-    }
     .ignoresSafeArea(.all, edges: isMeshConfigurationEnabled ? [] : .all)
     #if !os(macOS)
     .toolbarBackgroundVisibility(.hidden, for: .navigationBar)
@@ -71,7 +70,8 @@ struct MeshView: View {
             columns: $grid.columns,
             rows: $grid.rows,
             areCornersLocked: $grid.areCornersLocked,
-            areEdgesLocked: $grid.areEdgesLocked
+            areEdgesLocked: $grid.areEdgesLocked,
+            aspectRatio: $grid.aspectRatio
           )
           #if os(iOS)
           .frame(minWidth: 300, minHeight: 300)
@@ -112,6 +112,8 @@ struct MeshView: View {
       points: grid.vertices,
       colors: grid.colors
     )
+    .aspectRatio(grid.aspectRatio.value, contentMode: .fit)
+    .animation(.snappy, value: grid.aspectRatio.value)
   }
 
   // MARK: - Functions
@@ -120,8 +122,7 @@ struct MeshView: View {
   func prepareForExport() -> Image {
     let renderer = ImageRenderer(
       content: mesh
-        .aspectRatio(1, contentMode: .fit)
-        .frame(width: 2048, height: 2048)
+        .frame(width: 2048 * grid.aspectRatio.value, height: 2048)
     )
 
     #if os(macOS)

@@ -33,6 +33,9 @@ class MeshGrid {
   /// When corners are locked, they cannot be moved from their original position, maintaining the overall shape of the matrix.
   var areCornersLocked = true
 
+  /// The aspect ratio of the mesh.
+  var aspectRatio: AspectRatio = .square
+
   /// The matrix of vertices that make up the mesh.
   private(set) var matrix: [[MeshVertex]]
 
