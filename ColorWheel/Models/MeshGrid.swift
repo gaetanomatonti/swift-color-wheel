@@ -34,7 +34,7 @@ class MeshGrid {
   var areCornersLocked = true
 
   /// The aspect ratio of the mesh.
-  var aspectRatio: AspectRatio = .square
+  var aspectRatio: AspectRatio
 
   /// The matrix of vertices that make up the mesh.
   private(set) var matrix: [[MeshVertex]]
@@ -65,17 +65,19 @@ class MeshGrid {
 
   // MARK: - Init
 
-  init(columns: Int, rows: Int) {
+  init(columns: Int, rows: Int, aspectRatio: AspectRatio = .square) {
     self.columns = columns
     self.rows = rows
     let generatedVertices = MeshGenerator.rainbow(columns: columns, rows: rows).vertices
     self.matrix = generatedVertices
+    self.aspectRatio = aspectRatio
   }
 
-  init(with generator: MeshGenerator) {
+  init(with generator: MeshGenerator, aspectRatio: AspectRatio = .square) {
     self.columns = generator.columns
     self.rows = generator.rows
     self.matrix = generator.vertices
+    self.aspectRatio = aspectRatio
   }
 }
 

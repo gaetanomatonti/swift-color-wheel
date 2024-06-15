@@ -16,6 +16,9 @@ struct MeshConfiguratorView: View {
   /// The grid that represents the mesh to configure.
   @Bindable var grid: MeshGrid
 
+  /// The selected preset.
+  @State private var preset: MeshPreset = .rainbow
+
   /// The range of allowed vertices in the rows and columns of the grid.
   private let verticesRange = 3...6
 
@@ -23,15 +26,40 @@ struct MeshConfiguratorView: View {
 
   var body: some View {
     Form {
-      columnsStepper
+      Section {
+        presetPicker
+      }
 
-      rowsStepper
+      if case .custom = preset {
+        Section {
+          columnsStepper
 
-      aspectRatioPicker
+          rowsStepper
+
+          aspectRatioPicker
+        }
+      }
     }
   }
 
   // MARK: - Subviews
+
+  /// The picker to select a mesh preset.
+  private var presetPicker: some View {
+    HStack(spacing: 16) {
+      ForEach(MeshPreset.allCases) { preset in
+        Button {
+          self.preset = preset
+        } label: {
+          MeshPresetPreview(preset: preset, isSelected: self.preset == preset)
+        }
+        .buttonStyle(.plain)
+      }
+    }
+    .onChange(of: preset) { oldValue, newValue in
+      print(newValue)
+    }
+  }
 
   /// The stepper to control the number of columns in the grid.
   private var columnsStepper: some View {

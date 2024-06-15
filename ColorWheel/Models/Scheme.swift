@@ -8,6 +8,58 @@
 import Foundation
 import SwiftUI
 
+/// A type that represents a color scheme.
+struct ColorScheme {
+
+  /// The closure that computes the colors in the scheme.
+  typealias ColorsProvider = () -> [HSB]
+
+  // MARK: - Stored Properties
+
+  /// The label that describes the color scheme.
+  let label: String
+
+  /// The closure that computes the colors in the scheme.
+  private let colorsProvider: ColorsProvider
+
+  // MARK: - Computed Properties
+
+  /// The colors in `HSB` format.
+  var hsbColors: [HSB] {
+    colorsProvider()
+  }
+
+  /// The SwiftUI `Color` representation of the colors.
+  var colors: [Color] {
+    hsbColors.map(\.color)
+  }
+
+  // MARK: - Init
+
+  init(_ label: String, colorsProvider: @escaping ColorsProvider) {
+    self.label = label
+    self.colorsProvider = colorsProvider
+  }
+}
+
+extension ColorScheme {
+  static func monochromatic(from color: HSB) -> ColorScheme {
+    ColorScheme("Monochromatic") {
+      [color]
+    }
+  }
+
+  static func analogous(from color: HSB, distance: Angle) -> ColorScheme {
+    ColorScheme("Analogous") {
+      [
+        HSB(hue: color.hue - distance, saturation: color.saturation, brightness: color.brightness),
+        color,
+        HSB(hue: color.hue + distance, saturation: color.saturation, brightness: color.brightness),
+      ]
+    }
+  }
+}
+
 /// An enumeration of the possible color harmony schemes.
 enum Scheme: Int, CaseIterable {
   /// A monochromatic scheme.

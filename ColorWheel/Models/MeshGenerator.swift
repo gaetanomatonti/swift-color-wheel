@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 import Vectors
 
 /// An object that generates the grid for a mesh gradient.
@@ -88,5 +89,82 @@ extension MeshGenerator {
       let color = HSB(hue: .radians(hue), saturation: saturation, brightness: 1)
       return MeshVertex(position: position, color: color)
     }
+  }
+
+  static var aurora: MeshGenerator {
+    MeshGenerator(columns: 5, rows: 5) { row, column, helper in
+      let baseColor = HSB(hue: .degrees(180), saturation: 1.0, brightness: 1.0)
+      let distance = Angle(degrees: 5.0 * (CGFloat(row) + 1.0))
+      let colors = ColorScheme.analogous(from: baseColor, distance: distance).hsbColors
+
+      if case .center = helper.location(row, column) {
+        return MeshVertex(
+          position: helper.position(for: row, and: column),
+          color: colors[column - 1]
+        )
+      } else {
+        return MeshVertex(
+          position: helper.position(for: row, and: column),
+          color: HSB(hue: .degrees(180), saturation: 0.0, brightness: 0.0)
+        )
+      }
+    }
+  }
+
+  static var empty: MeshGenerator {
+    MeshGenerator(columns: 3, rows: 3) { row, column, helper in
+      return MeshVertex(
+        position: helper.position(for: row, and: column),
+        color: HSB(hue: .zero, saturation: 0.0, brightness: 0.0)
+      )
+    }
+  }
+}
+
+struct MeshPreset: Identifiable {
+  enum Identifier: String, Hashable, Equatable {
+    case rainbow
+    case aurora
+    case custom
+  }
+
+  let id: Identifier
+
+  let label: String
+
+  let generator: MeshGenerator
+}
+
+extension MeshPreset: Hashable {
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(id)
+  }
+}
+
+extension MeshPreset {
+  static func ==(lhs: MeshPreset, rhs: MeshPreset) -> Bool {
+    lhs.id == rhs.id
+  }
+}
+
+extension MeshPreset {
+  static var rainbow: MeshPreset {
+    MeshPreset(id: .rainbow, label: "Rainbow", generator: .rainbow(columns: 5, rows: 5))
+  }
+
+  static var aurora: MeshPreset {
+    MeshPreset(id: .aurora, label: "Aurora", generator: .aurora)
+  }
+
+  static var custom: MeshPreset {
+    MeshPreset(id: .custom, label: "Custom", generator: .empty)
+  }
+
+  static var allCases: [MeshPreset] {
+    [
+      .rainbow,
+      .aurora,
+      .custom
+    ]
   }
 }
