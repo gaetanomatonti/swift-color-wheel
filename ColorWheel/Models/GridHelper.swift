@@ -40,6 +40,21 @@ struct GridHelper {
     )
   }
 
+  /// Computes a randomized position of the point at the specified row and column.
+  /// - Parameters:
+  ///   - row: The row of the point.
+  ///   - column: The column of the point.
+  /// - Returns: The `CGPoint` representing the position of the point in the grid.
+  func randomPosition(for row: Int, and column: Int) -> CGPoint {
+    let distance = position(for: 1, and: 1)
+    let position = position(for: row, and: column)
+    let x = distance.x / 2
+    let y = distance.y / 2
+    let randomX = CGFloat.random(in: (position.x - x)...(position.x + x))
+    let randomY = CGFloat.random(in: (position.y - y)...(position.y + y))
+    return CGPoint(x: randomX, y: randomY)
+  }
+
   /// Computes the index of a vertex in a flattened list of vertices.
   ///
   /// This method converts the row and columns indices from a matrix into an index suitable for a flattened list.

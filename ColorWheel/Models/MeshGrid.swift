@@ -89,6 +89,14 @@ class MeshGrid {
     columns = generator.columns
     rows = generator.rows
   }
+
+  /// Enables the randomization in the generator of the preset and generates new vertices.
+  /// - Parameter preset: The base preset of the mesh.
+  func randomize(from preset: MeshPreset) {
+    matrix = preset.generator
+      .configuration(MeshGenerator.Configuration(randomizesPositions: true))
+      .vertices
+  }
 }
 
 // MARK: - Environment

@@ -63,6 +63,14 @@ struct MeshView: View {
         .buttonStyle(.bordered)
         .buttonBorderShape(.circle)
       }
+
+      ToolbarItem(placement: .bottomBar) {
+        Button {
+          grid.randomize(from: preset)
+        } label: {
+          Label("Randomize", systemImage: "dice")
+        }
+      }
     }
     .sheet(isPresented: $isConfiguratorVisible) {
       NavigationStack {
