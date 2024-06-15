@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import struct SwiftUI.Color
+import SwiftUI
 
 /// An object that represents a grid of vertices in a mesh.
 @Observable
@@ -71,4 +71,18 @@ class MeshGrid {
     let generatedVertices = MeshGenerator.rainbow(columns: columns, rows: rows).vertices
     self.matrix = generatedVertices
   }
+
+  init(with generator: MeshGenerator) {
+    self.columns = generator.columns
+    self.rows = generator.rows
+    self.matrix = generator.vertices
+  }
+}
+
+extension EnvironmentValues {
+  /// Whether the corners of the matrix are locked.
+  @Entry var areGridCornersLocked = false
+
+  /// Whether the edges of the matrix are locked, and cannot be moved on their perpendicular axis.
+  @Entry var areGridEdgesLocked = false
 }

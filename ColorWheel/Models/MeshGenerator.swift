@@ -24,10 +24,10 @@ struct MeshGenerator {
   // MARK: - Stored Properties
 
   /// The columns of the grid.
-  private let columns: Row
+  let columns: Row
 
   /// The rows of the grid.
-  private let rows: Column
+  let rows: Column
 
   /// The closure that creates a vertex from row, and column indices, and a `GridHelper` object.
   private var vertexProvider: VertexProvider
