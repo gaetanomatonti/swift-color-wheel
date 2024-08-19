@@ -15,12 +15,6 @@ extension ColorSlider {
 
     // MARK: - Stored Properties
 
-    /// The position of the grabber in the frame.
-    @State private var position: CGPoint
-
-    /// The frame that contains the grabber.
-    private let frame: CGRect
-
     /// The range of values allowed in the slider.
     private let range: ClosedRange<Value>
 
@@ -38,39 +32,38 @@ extension ColorSlider {
 
     // MARK: - Init
 
-    init(in frame: CGRect, value: Binding<Value>, range: ClosedRange<Value>) {
-      let radius = frame.height / 2
-      let trackFrame = frame.insetBy(dx: radius, dy: .zero)
-      
-      self.frame = trackFrame
+    init(value: Binding<Value>, range: ClosedRange<Value>) {
       self._value = value
       self.range = range
-      self.position = Self.position(in: trackFrame, for: value.wrappedValue.percentage(in: range))
     }
 
     // MARK: - Body
 
     var body: some View {
-      Circle()
-        .fill(style)
-        .stroke(.thinMaterial, lineWidth: 4)
-        .position(position)
-        .gesture(
-          DragGesture()
-            .onChanged { gesture in
-              updateValue(for: gesture.location)
-            }
-        )
-        .onChange(of: value) { oldValue, newValue in
-          position = Self.position(in: frame, for: percentage)
-        }
+      GeometryReader { geometry in
+        let localFrame = geometry.frame(in: .local)
+        let frame = localFrame.insetBy(dx: localFrame.height / 2, dy: .zero)
+        
+        Circle()
+          .fill(style)
+          .stroke(.thinMaterial, lineWidth: 4)
+          .position(position(in: frame, for: value.percentage(in: range)))
+          .gesture(
+            DragGesture()
+              .onChanged { gesture in
+                updateValue(for: gesture.location, in: frame)
+              }
+          )
+      }
     }
 
     // MARK: - Functions
 
     /// Updates the selected value from the coordinates of the grabber.
-    /// - Parameter location: The location of the drag gesture used to position the grabber.
-    func updateValue(for location: CGPoint) {
+    /// - Parameters:
+    ///   - location: The location of the drag gesture used to position the grabber.
+    ///   - frame: The frame of the container view.
+    func updateValue(for location: CGPoint, in frame: CGRect) {
       let percentage = (location.x - frame.minX) / frame.width
       value = range.value(from: percentage)
     }
@@ -79,7 +72,7 @@ extension ColorSlider {
     /// - Parameters:
     ///   - frame: The frame that contains the grabber.
     ///   - percentage: The percentage of the selected value, used to correctly position the grabber.
-    static func position(in frame: CGRect, for percentage: Double) -> CGPoint {
+    private func position(in frame: CGRect, for percentage: Double) -> CGPoint {
       CGPoint(
         x: frame.minX + frame.width * percentage,
         y: frame.midY

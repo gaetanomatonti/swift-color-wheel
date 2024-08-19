@@ -34,14 +34,10 @@ struct ColorSlider<Value>: View where Value: PercentageConvertible {
   // MARK: - Body
 
   var body: some View {
-    GeometryReader { geometry in
-      let frame = geometry.frame(in: .local)
-
-      ZStack {
-        Track(frame: frame)
-
-        Grabber(in: frame, value: $value, range: range)
-      }
+    ZStack {
+      Track()
+      
+      Grabber(value: $value, range: range)
     }
     .frame(height: height)
   }
@@ -50,17 +46,12 @@ struct ColorSlider<Value>: View where Value: PercentageConvertible {
 // MARK: - Previews
 
 #if DEBUG
+@available(iOS 18.0, *)
 #Preview {
-  struct Wrapped: View {
-    @State private var progress: Double = .zero
-    
-    var body: some View {
-      ColorSlider(value: $progress)
-        .padding()
-    }
-  }
-  
-  return Wrapped()
+  @Previewable @State var progress: Double = .zero
+
+  ColorSlider(value: $progress)
+    .padding()
     .backgroundStyle(ShaderLibrary.hue(.boundingRect))
 }
 #endif
