@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/gaetanomatonti/swift-vectors",
       "state" : {
-        "branch" : "develop",
-        "revision" : "a5200621c805154f19b29baa13cb81650440f3c7"
+        "revision" : "00b18e2e2c7c20c67d88fb305d4812b04fa73c6f",
+        "version" : "0.2.0"
       }
     }
   ],

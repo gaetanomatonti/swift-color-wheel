@@ -83,7 +83,9 @@ struct ControlPoint: View {
   /// - Parameter location: The location of the drag gesture used to compute the new position of the control point.
   private func updateColor(from location: CGPoint) {
     /// The vector of the control point relative to the center of the wheel.
-    let position = (location - center).limit(radius)
+    var position = (location - center)
+    // Limit the vector to avoid exceeding the radius of the circle.
+    position.limit(to: radius)
 
     updateHue(from: position)
     updateSaturation(from: position)
